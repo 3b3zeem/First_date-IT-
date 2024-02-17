@@ -1,0 +1,237 @@
+:root {
+   --background: #fff;
+   --background2: #f9f9f9;
+   --background3: #0258f8;
+   --text-primary: #222;
+   --text-primary2: #3e3e3f;
+   --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+   --box-shadow: 0 5px 25px rgba(0 0 0 / 20%);
+}
+
+[data-theme='dark'] {
+   --background: #222;
+   --background2: #323232;
+   --background3: #0258f8;
+   --text-primary: #fff;
+   --text-primary2: #fafafa;
+}
+
+.app .header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   /* position:fixed; */
+   z-index: 1000;
+}
+
+.app .header .logoDiv .logo {
+   color: var(--text-primary);
+   align-items: center;
+   justify-content: center;
+   font-weight: 500;
+   cursor: pointer;
+   text-decoration: none;
+}
+
+.app .header .logoDiv .logo .icon {
+   font-size: 25px;
+   color: var(--text-primary);
+   margin-right: 10px;
+}
+
+.darkMode {
+   cursor: pointer;
+   border-radius: 0.4rem;
+   padding: 0.5rem .5rem;
+   background: var(--background);
+   color: var(--text-primary);
+   font-size: 20px;
+   font-weight: 600;
+   outline: none;
+   margin-left: .7em;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.darkMode:hover {
+   background: var(--background3);
+   color: var(--background);
+   border: 2px solid #008dd0;
+   transition: 0.3s ease-in-out;
+   transform: translateY(-3px);
+   transform: scale(3px);
+   outline: none;
+   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (max-width:768px) {
+   .navBar {
+      background-color: var(--background);
+      color:var(--text-primary);
+      position: absolute;
+      width: 100%;
+      height: max-content;
+      padding: 1rem;
+      top: 0;
+      left: -500%;
+      box-shadow: 0 2px 4px rgba(201, 201, 201, 0.94);
+      transition: 0.5s ease;
+   }
+
+   .navBar .navLists {
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      margin: auto;
+   }
+
+   .navBar .navLists .navItem {
+      padding: 1rem 0;
+   }
+
+   .navBar .navLists .navItem .navLink {
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: .3s ease;
+   }
+
+   .navBar .navLists .navItem .navLink:hover {
+      color: #c2c2c2;
+      margin-left: 8px;
+   }
+
+   .header .headerBtns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+   }
+
+   .header .headerBtns .btn {
+      font-weight: 600;
+      color: var(--text-primary);
+      border-radius: 1px;
+   }
+
+   .header .headerBtns .btn:hover {
+      color: var(--background);
+   }
+
+   .header .headerBtns .loginBtn {
+      background: none;
+   }
+
+   .header .headerBtns .loginBtn:hover {
+      background: var(--background3);
+   }
+
+   .navBar .closeNavbar {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      color: var(--text-primary);
+   }
+
+   .navBar .closeNavbar .icon {
+      font-size: 25px;
+   }
+
+   .navBar .closeNavbar:hover {
+      color: var(--text-primary);
+   }
+
+   .activeNavbar {
+      left: 0%;
+   }
+}
+
+.app .header .togglrNavbar .icon {
+   font-size: 25px;
+   color: var(--text-primary);
+}
+
+.app .activeNavHeader {
+   box-shadow: 0 1px 1px rgba(201, 201, 201, 0.94);
+   background-color: var(--background);
+}
+
+@media screen and (min-width:769px) {
+
+   .togglrNavbar,
+   .closeNavbar {
+      display: none;
+   }
+
+   .app .header {
+      padding: 1.5rem 2rem;
+   }
+
+   .app .header .navBar .navLists {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+   }
+
+   .app .header .navBar .navLists .navItem .navLink {
+      color: var(--text-primary);
+      padding: 0 0.45rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      text-decoration: none;
+   }
+
+   .app .header .navBar .navLists .navItem .navLink:hover {
+      color: #a1a1a1;
+   }
+
+   .app .header .headerBtns .btn {
+      margin-left: 1rem;
+      background-color: var(--background);
+   }
+
+   .app .header .headerBtns .btn a {
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+   }
+
+   .app .header .headerBtns .loginBtn {
+      outline: none;
+      cursor: pointer;
+      border-radius: 0.4rem;
+      padding: 0.4rem .8rem;
+      color: var(--text-primary);
+      font-size: 20px;
+      font-weight: 600;
+      outline: none;
+   }
+
+   .app .header .headerBtns .loginBtn:hover {
+      background: var(--background3);
+      border: 2px solid #008dd0;
+      transition: 0.3s ease-in-out;
+      transform: translateY(-3px);
+      transform: scale(3px);
+      outline: none;
+      box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.05);
+   }
+
+   .app .header .headerBtns .loginBtn:hover a {
+      color: var(--background);
+   }
+}
+
+@media screen and (min-width:960px) {
+   .app .header .navBar .navLists .navItem {
+      padding: 0 0.7rem;
+   }
+}
+
+@media screen and (min-width:1024px) {
+   .app .header {
+      padding: 1rem 8.5rem !important;
+   }
+}
