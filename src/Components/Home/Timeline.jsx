@@ -13,6 +13,9 @@ const Timeline =()=>{
 
     return(
         <div className="tt">
+        <div data-aos="fade-down" className="step_use">
+            <h2>Steps for using our website</h2>
+        </div>
             <div className="Timeline">
                 <div data-aos="zoom-in-right" className="container-timeline left-container">
                 <GiPlainCircle className="icon-timeline"/>

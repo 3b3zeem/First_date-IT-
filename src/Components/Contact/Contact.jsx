@@ -34,11 +34,37 @@ const ContactUsPage = () => {
 
   return (
     <React.Fragment>
+      <section className="image-all">
+        <div className="secContainer">
+          <div className="homeText">
+            <h1 className="title">Contact Us</h1>
+            <p className="subTitle">We are very happy contact us</p>
+          </div>
+        </div>
+      </section>
+      <div className="hello-there">
+        <div className="hello">
+          <h1 className="text-hello">Hello there...</h1>
+        </div>
+        <div className="dis">
+          <p className="subTitle">
+            <span>Momentum travel </span>is the builder and licenser of several
+            custom travel booking management software products and services. <br />
+            Whether you are a travel company, job seeker, potential client or an
+            alliance member contact us for a technology partner that keeps you
+            ahead of the curve.
+          </p>
+        </div>
+      </div>
+
       <div className="Contact-block">
         <div className="Container-contact">
           <div className="image-of-contact">
             <h2>Get in Touch!</h2>
-            <p>We will love to talk to you, get started by filling the details below and submit.</p>
+            <p>
+              We will love to talk to you, get started by filling the details
+              below and submit.
+            </p>
           </div>
           <div className="contant-of-contact">
             <h3 className="text-contact">Contact US</h3>
