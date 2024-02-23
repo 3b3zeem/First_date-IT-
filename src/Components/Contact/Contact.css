@@ -1,134 +1,137 @@
-
-.box {
-    position: relative;
-    width: 600px;
-    height: 100vh;
-    background: rgba(224, 224, 224, 0.729);
-    border-radius: 10px;
+.Contact-block {
     margin: auto;
-}
-
-.form {
-    position: absolute;
-    inset: 2px;
-    background: rgba(232, 231, 231, 0.7);
-    border-radius: 10px;
-    z-index: 10;
-    padding: 50px 60px;
+    box-sizing: border-box;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    opacity: 0.9;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    height: 89.3vh;
 }
 
-.form h2 {
-    color: #15c7b4;
-    font-weight: 500;
-    letter-spacing: 0.1rem;
+.Container-contact {
+    border-radius: 30px;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.image-of-contact h2{
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 50%;
+    color: #f9f9f9;
     text-align: center;
 }
 
-.input {
-    width: 500px;
-    position: relative;
-    margin-top: 25px;
+.image-of-contact p{
+    font-size: 18px;
+    text-align: center;
+    color: var(--WhiteColor);
 }
 
-.input input,
-.input textarea {
-    position: relative;
+
+.Container-contact .image-of-contact {
+    width: 35%;
+    background-image: url('/src/im&ve/sidenav2.jpg');
+    background-position: center;
+    background-size: 100% 100%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contant-of-contact {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 65%;
+    height: 100%;
+}
+
+.text-contact {
+    border-top-right-radius: 30px;
     width: 100%;
-    padding: 20px 15px;
-    background: transparent;
+    height: 100%;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    padding: 20px;
+    color: #44576d;
+    margin: auto;
+}
+
+.contant-of-contact .coll {
+    border-bottom-right-radius: 30px;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.contant-of-contact form .input-feild5 {
+    width: 90%;
+    margin: 0.5rem auto;
     border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
     outline: none;
-    color: rgb(0, 0, 0);
-    font-size: 1.3em;
-    letter-spacing: 0.05em;
-    z-index: 10;
+    padding: 10px 5px;
+    font-size: 18px;
+    text-align: left;
 }
 
-.input i {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: #15c7b4;
-    border-radius: 4px;
-    transition: 0.5s;
-    pointer-events: none;
-    z-index: 9;
+.contant-of-contact form .input-feild5::placeholder{
+    padding-left: 5px;
 }
 
-.textarea i {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: #08b3a4;
-    border-radius: 4px;
-    transition: 0.5s;
-    pointer-events: none;
-    z-index: 9;
+.btn-readyc3 {
+    width: 60%;
+    height: 3rem;
+    border: 2px solid #000;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1.5rem;
+    background: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px auto;
 }
 
-.input input:valid~i,
-.input input:focus~i {
-    height: 50px;
+.btn-readyc3:hover {
+    background-color: var(--background3);
+    color: var(--background);
+    border: none;
+    transition: 0.3s ease-in-out;
+    transform: translateY(-3px);
+    transform: scale(3px);
 }
 
-
-.input textarea:focus~i {
-    height: 90px;
-}
 
 .link2 {
+    color: #44576d;
     text-align: center;
     padding-top: 20px;
 }
 
 .link2 a {
+    color: #44576d;
     margin: 10px 0;
     font-size: 18px;
-    color: #1e1e1e;
     text-decoration: none;
-}
-
-.link2 a:hover {
-    color: #15c7b4;
-    border-bottom: 2px solid rgb(0, 0, 0);
     transition: 0.1s ease;
 }
 
-.form button {
-    margin-left: auto;
-    margin-right: auto;
-    border: none;
-    outline: none;
-    background: #373838;
-    padding: 15px 30px;
-    width: 300px;
-    margin-top: 20px;
-    border-radius: 5px;
-    font-weight: 300;
-    text-decoration: none;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 22px;
-}
-
-.form button:active {
-    opacity: 0.8;
-    color: #ffffff;
-}
-
-.form button:hover {
-    letter-spacing: 2px;
-    transition: 0.5s;
-    background: #15c7b4;
-}
-
-p {
-    font-size: 18px;
+.link2 a:hover {
+    border-bottom: 2px solid rgb(0, 0, 0);
 }

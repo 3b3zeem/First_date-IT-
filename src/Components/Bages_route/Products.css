@@ -1,9 +1,10 @@
-.container-product{
+.container-product {
     margin-bottom: 20px;
     box-sizing: border-box;
-} 
-.container-product h1{
-    margin-bottom:20px;
+}
+
+.container-product h1 {
+    margin-bottom: 20px;
     padding: 20px;
     box-sizing: border-box;
     display: flex;
@@ -20,8 +21,9 @@
     word-spacing: 1px;
     text-wrap: wrap;
     line-height: 20px;
-} 
-.container-product-cards{
+}
+
+.container-product-cards {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -29,7 +31,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.container-product-card{
+
+.container-product-card {
     width: 30%;
     display: flex;
     flex-direction: row;
@@ -37,17 +40,20 @@
     align-items: center;
     margin: 20px auto;
 }
-.container-product-card .onecard{
+
+.container-product-card .one_card {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border: 1px solid rgba(0, 0, 0, 0.24);
     border-radius: 15px;
-    padding: 10px;
+    padding: 20px;
     outline: none;
 }
-.card-title1 span,.card-text span{
+
+.card-title1 span,
+.card-text span {
     color: var(--text-primary);
-    font-size:19px;
+    font-size: 18px;
     font-weight: 300;
     text-transform: capitalize;
     text-align: left;
@@ -57,62 +63,62 @@
     line-height: 20px;
 }
 
-.card-title1 u,.card-text u{
+.card-title1 u,
+.card-text u {
     color: var(--text-primary);
     font-size: 20px;
     font-weight: 500;
     text-transform: capitalize;
-    text-align: left;
-    letter-spacing: 0px;
     word-spacing: 1px;
     text-wrap: wrap;
-    line-height: 20px;
-    text-decoration: none;
 }
-.btn-Home{
-    padding: 0.4rem 1rem;
-    width: 6rem;
-    height: 3rem;
-    border: 2px solid #fff;
-    outline: none;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    background:#0258f8;
-}
-.buttons{
-    height: 4rem;
+
+.buttons {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+    margin: 30px 0px 10px 0px;
 }
-.btn-Home .Link,.btn-Home span{
-    color: #fff;
+
+.btn-Home {
+    padding: 0.4rem 1rem;
+    width: 6rem;
+    height: 3rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    background: var(--background3);
+    transition: 0.3s ease-in-out;
+}
+
+.btn-Home .Link,
+.btn-Home span {
+    color: var(--background2);
     font-size: 18px;
     font-weight: 500;
     text-decoration: none;
 }
-.btn-Home:hover .Link,.btn-Home:hover span{
-    color: rgb(0, 0, 255);
+
+
+.btn-Home:hover {
+    transform: translateY(-3px);
+    transform: scale(3px);
 }
-.btn-Home:hover{
-    border: 1px solid #000;
-    background-color: #fff;
-    transition: 0.3s ease-in-out;
-      transform: translateY(-3px);
-      transform: scale(3px);
-}
-.Add{
+
+.Add {
     width: 100%;
     height: 18rem;
-    margin-top: 50px;
+    margin: 50px 0;
     background-image: url('/src/im&ve/cta-banner-opt.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.disp-flex-add{
+
+.disp-flex-add {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,12 +127,14 @@
     gap: 30px;
     padding-top: 50px;
 }
-.dispText-add h1{
+
+.dispText-add {
     font-size: 40px;
     font-weight: 900;
     color: var(--text-primary);
 }
-.btn-Home-add1{
+
+.btn-Home-add1 {
     padding: 0.6rem 1.5rem;
     width: 17rem;
     height: 3rem;
@@ -134,21 +142,25 @@
     outline: none;
     cursor: pointer;
     border-radius: 0.5rem;
-    background:none;
-    
+    background: none;
+
 }
-.btn-Home-add1 .Link-add1{
+
+.btn-Home-add1 .Link-add1 {
     color: #fff;
     font-size: 18px;
     font-weight: 500;
     text-decoration: none;
 }
-.btn-Home-add1:hover .Link-add1{
-    color: rgb(0, 0, 255);
+
+.btn-Home-add1:hover .Link-add1 {
+    color: var(--background3);
 }
-.btn-Home-add1:hover{
-    background-color: #fff;
+
+.btn-Home-add1:hover {
+    background-color: var(--background);
+    border: none;
     transition: 0.3s ease-in-out;
-      transform: translateY(-3px);
-      transform: scale(3px);
+    transform: translateY(-3px);
+    transform: scale(3px);
 }

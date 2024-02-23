@@ -46,7 +46,6 @@ const Navbar = () => {
           <Link to="/" className="logo">
             <h1 className="flex">
               <BiLogoMediumOld className="icon menuIcon" />
-              bla
             </h1>
           </Link>
         </div>
@@ -58,23 +57,23 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="navItem">
-              <Link to="/products" className="navLink">
-                Advertisments
+              <Link to="/about" className="navLink">
+                About
               </Link>
             </li>
             <li className="navItem">
-              <Link to="/" className="navLink">
-                Resources
-              </Link>
-            </li>
-            <li className="navItem">
-              <Link to="/" className="navLink">
-                About Us
+              <Link to="/advertisements" className="navLink">
+                Advertisements
               </Link>
             </li>
             <li className="navItem">
               <Link to="/contact" className="navLink">
                 contact
+              </Link>
+            </li>
+            <li className="navItem">
+              <Link to="/userProfile" className="navLink">
+                User
               </Link>
             </li>
           </ul>
@@ -83,9 +82,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="headerBtns flex">
-          <button className="btn loginBtn ">
+          {/* <button className="btn loginBtn ">
             <Link to="/registration">Registration</Link>
-          </button>
+          </button> */}
           <button className="btn loginBtn">
             <Link to="/login">Login</Link>
           </button>

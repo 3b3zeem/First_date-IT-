@@ -1,20 +1,21 @@
-//=======================================
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./details.css"; // TripDetailPage.js
-// import { IoIosArrowForward } from "react-icons/io";
-// import { IoIosArrowBack } from "react-icons/io";
+import "./details.css";
+
 import { HiPlusSm } from "react-icons/hi";
 import { HiMinusSm } from "react-icons/hi";
-// import img1 from '../../im&ve/1.jpg'
+
 import Footer from "../Footer/Footer";
 
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 const ProductDetails = () => {
-    let { productId } = useParams();
+    let { advertisementId } = useParams();
 
     const [product, setProduct] = useState([]);
     useEffect(() => {
-        fetch(`https://localhost:7214/GetAdvertisementById/${productId}`)
+        fetch(`https://localhost:7214/GetAdvertisementById/${advertisementId}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
@@ -29,17 +30,8 @@ const ProductDetails = () => {
                 }
             })
             .catch((error) => console.error("Error fetching product:", error));
-    }, [productId]);
+    }, [advertisementId]);
 
-    // const [sliderPos, setSliderPos] = useState(0);
-    // const totalSliderItems = 4;
-    // const slideToNext = () => {
-    //   setSliderPos((prevPos) => (prevPos < totalSliderItems - 1 ? prevPos + 1 : prevPos));
-    // };
-
-    // const slideToPrev = () => {
-    //   setSliderPos((prevPos) => (prevPos > 0 ? prevPos - 1 : prevPos));
-    // };
 
     const [qty, setQty] = useState(1);
     const productPrice = 250;
@@ -59,19 +51,23 @@ const ProductDetails = () => {
         }
     };
 
+    useEffect(() => {
+        Aos.init({ duration: 2000 })
+      }, [])
+
     return (
         <>
             <div className="allll">
                 <div className="Advertisement-No">
-                    <h1>Advertisement No:&nbsp; {productId}</h1>
+                    <h1>Advertisement No:&nbsp; {advertisementId}</h1>
                 </div>
                 <div className="container-ads">
                     <div className="product-content">
                         <a className="product-subtitle" href="aa">
                             COMPANY NAME
                         </a>
-                        <h1 className="product-title">Ad Name:{product.advert_name}</h1>
-                        <p className="product-text">Discription: {product.details}</p>
+                        <h1 className="product-title">Ad Name: {product.advert_name}</h1>
+                        <p className="product-text">Description: {product.details}</p>
 
                         <div className="wrapper">
 
@@ -119,7 +115,7 @@ const ProductDetails = () => {
                 <div className="Add">
                     <div className="disp-flex-add">
                         <h1 className="dispText-add">
-                            All Advertisments From Here!
+                            All Advertisements From Here!
                         </h1>
 
                         <button className="btn-Home-add1">

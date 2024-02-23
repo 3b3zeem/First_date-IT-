@@ -1,10 +1,10 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Registration from "./Components/Registration/Registration";
 import Login from "./Components/Login/Login";
-import Navbar from "./Components/NavBar/Navbar";
 import Contact from "./Components/Contact/Contact";
 import Home from "./Components/Home/Home";
+import Navbar from "./Components/NavBar/Navbar";
 import Ready from "./Components/Home/Ready";
 import Testimation from "./Components/Testimation/Testimation";
 import Footer from "./Components/Footer/Footer";
@@ -15,6 +15,12 @@ import AddProduct from "./Components/Bages_route/AddProduct";
 import ProductDetails from "./Components/Bages_route/ProductDetails";
 import EditProduct from "./Components/Bages_route/EditProduct";
 import useLocalStorage from "use-local-storage";
+import UserProfile from "./Components/UserProfile/UserProfile";
+import { useEffect, useState } from "react";
+import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
+import Popular from "./Components/Popular/Popular";
+import About from "./Components/About/About";
+import Loader from "./Components/Loader/Loader";
 
 function App() {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -26,30 +32,82 @@ function App() {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
   };
-  return (
+
+  const location = useLocation();
+  const hideNavbar =
+    location.pathname === "/login" || location.pathname === "/registration";
+
+  const [showTopBtn, setShowTopBtn] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    });
+  }, []);
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Let's create an async method to fetch fake data
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="App" data-theme={theme}>
-      <Navbar />
+      <div className="top-to-btm">
+        {showTopBtn && (
+          <MdOutlineKeyboardDoubleArrowUp
+            className="icon-position icon-style"
+            onClick={goToTop}
+          />
+        )}
+      </div>
+
+      {!hideNavbar && <Navbar />}
       <Routes>
         <Route
           path="/"
           element={
             <>
               <Home />
-              <Middle />
+              <Popular />
               <Timeline />
               <Ready />
+              <Middle />
               <Testimation />
               <Footer />
             </>
           }
         />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/add" element={<AddProduct />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
-        <Route path="/products/:productId/edit" element={<EditProduct />} />
+        <Route path="/advertisements" element={<Products />} />
+        <Route path="/advertisements/add" element={<AddProduct />} />
+        <Route
+          path="/advertisements/:advertisementId"
+          element={<ProductDetails />}
+        />
+        <Route
+          path="/advertisements/:advertisementId/edit"
+          element={<EditProduct />}
+        />
+        <Route path="/userProfile" element={<UserProfile />} />
       </Routes>
     </div>
   );

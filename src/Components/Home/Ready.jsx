@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Ready.css'
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { HiOutlineChevronUp } from "react-icons/hi";
 
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 const Ready = () => {
     const [show, setshow] = useState(false);
     const [isActive, setIsActive] = useState(false);
 
+    useEffect(() => {
+        Aos.init({ duration: 2000 })
+      }, [])
+
     return (
         <div className="con">
-            <div className="ready">
+            <div data-aos="fade-right" className="ready">
                 <div className="disp-flex">
-                    <h1 className="dispText">Ready to drive your business success?</h1>
-                    <button className="btn-ready">Book Now</button>
+                    <h1 data-aos="fade-down" className="dispText">Ready to drive your business success?</h1>
+                    <button data-aos="fade-up" className="btn-ready">Book Now</button>
                 </div>
             </div>
             <div className="T-Partner">
                 <div className="disp-flex1">
-                    <div className="icon icon-ready dropdown">
+                    <div data-aos="fade-down" className="icon icon-ready dropdown">
                         {isActive ? <HiOutlineChevronUp className="Icon" onClick={() => {
                             setshow(!show)
                             setIsActive(!isActive)
@@ -29,7 +36,7 @@ const Ready = () => {
                             }} />
                         }
                     </div>
-                    <h1 className="dispText1">Your Trusted Technology Partner</h1>
+                    <h1 data-aos="fade-left" className="dispText1">Your Trusted Technology Partner</h1>
                 </div>
                 {
                     show ? <div className="about" >

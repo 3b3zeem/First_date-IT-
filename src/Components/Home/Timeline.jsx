@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Timeline.scoped.css"
 
 import { GiPlainCircle } from "react-icons/gi";
 
-
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Timeline =()=>{
+    useEffect(() => {
+        Aos.init({ duration: 2000 })
+      }, [])
+
     return(
         <div className="tt">
             <div className="Timeline">
-                <div className="container-timeline left-container">
+                <div data-aos="zoom-in-right" className="container-timeline left-container">
                 <GiPlainCircle className="icon-timeline"/>
                     <div className="text-box">
                         <h2>bla bla bla</h2>
@@ -19,7 +24,7 @@ const Timeline =()=>{
                         <span className="left-container-arrow"></span>
                     </div>
                 </div>
-                <div className="container-timeline right-container">
+                <div data-aos="zoom-in-left" className="container-timeline right-container">
                 <GiPlainCircle className="icon-timeline"/>
 
                     <div className="text-box">
@@ -31,7 +36,7 @@ const Timeline =()=>{
 
                     </div>
                 </div>
-                <div className="container-timeline left-container">
+                <div data-aos="zoom-in-right" className="container-timeline left-container">
                 <GiPlainCircle className="icon-timeline"/>
 
                     <div className="text-box">
@@ -42,7 +47,7 @@ const Timeline =()=>{
                             <span className="left-container-arrow"></span>
                     </div>
                 </div>
-                <div className="container-timeline right-container">
+                <div data-aos="zoom-in-left" className="container-timeline right-container">
                 <GiPlainCircle className="icon-timeline"/>
 
                     <div className="text-box">
@@ -54,7 +59,7 @@ const Timeline =()=>{
 
                     </div>
                 </div>
-                <div className="container-timeline left-container">
+                <div data-aos="zoom-in-right" className="container-timeline left-container">
                 <GiPlainCircle className="icon-timeline"/>
 
                     <div className="text-box">
@@ -66,7 +71,7 @@ const Timeline =()=>{
 
                     </div>
                 </div>
-                <div className="container-timeline right-container">
+                <div data-aos="zoom-in-left" className="container-timeline right-container">
                 <GiPlainCircle className="icon-timeline"/>
                     <div className="text-box">
                         <h2>bla bla bla</h2>

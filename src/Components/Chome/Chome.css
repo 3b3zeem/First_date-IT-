@@ -1,8 +1,6 @@
-.home1{
+.home1 {
     height: 70vh;
-    background: linear-gradient(
-        rgba(33,33,33,0.522),rgba(
-            33,33,33,0.522)),url('../../im&ve/cta-banner-opt.webp');
+    background: linear-gradient(rgba(33, 33, 33, 0.522), rgba(33, 33, 33, 0.522)), url('../../im&ve/cta-banner-opt.webp');
     background-position: center;
     background-size: cover;
     display: flex;
@@ -12,10 +10,12 @@
     position: relative;
     margin-bottom: 50px;
 }
-.home1 .secContainer .homeText{
+
+.home1 .secContainer .homeText {
     text-align: center;
 }
-.home1 .secContainer .homeText .title{
+
+.home1 .secContainer .homeText .title {
     color: #fff;
     font-size: 2rem;
     font-weight: 700;
@@ -23,7 +23,8 @@
     text-align: center;
 
 }
-.home1 .secContainer .homeText .subTitle{
+
+.home1 .secContainer .homeText .subTitle {
     color: #fff;
     font-size: 13px;
     font-weight: 300px;
@@ -33,52 +34,66 @@
     margin: auto;
 }
 
-.home1 .secContainer .homeText .btn-Home{
-    padding: 0.6rem 1.5rem;
+.home1 .secContainer .homeText .btn-Home {
     width: 14rem;
-    height: 3rem;
-    border: 2px solid #fff;
+    height: 4rem;
     outline: none;
+    border: none;
     cursor: pointer;
     border-radius: 0.5rem;
-    background:none;
-    
+    background: none;
+    transition: 0.6s ease;
 }
-.home1 .secContainer .homeText .btn-Home .Link{
+
+.home1 .secContainer .homeText .btn-Home .Link {
     color: #fff;
-    font-size: 18px;
+    font-size: 30px;
     font-weight: 500;
     text-decoration: none;
 }
-.home1 .secContainer .homeText .btn-Home:hover .Link{
-    color: rgb(0, 0, 255);
+
+.home1 .secContainer .homeText .btn-Home .Link .arrowLeft{
+    font-size: 30px;
+    margin-bottom: 4px;
 }
-.home1 .secContainer .homeText .btn-Home:hover{
-    background-color: #fff;
-    transition: 0.3s ease-in-out;
-      transform: translateY(-3px);
-      transform: scale(3px);
+
+.home1 .secContainer .homeText .btn-Home:hover .Link .arrowLeft{
+    transform: translateX(-3px);
+}
+
+.home1 .secContainer .homeText .btn-Home:hover .Link {
+    color: var(--background3);
+}
+
+.home1 .secContainer .homeText .btn-Home:hover {
+    background-color: var(--background);
+    border: 2px solid #fff;
+    transform: translateY(-3px);
+    transform: scale(3px);
 }
 
 @media screen and (min-width:556px) {
-.home1 .secContainer .homeText .title{
-    font-size: 2.5rem;
-}
-.home1 .secContainer .homeText .title .subTitle{
-    font-size: 20px;
-}
+    .home1 .secContainer .homeText .title {
+        font-size: 2.5rem;
+    }
+
+    .home1 .secContainer .homeText .title .subTitle {
+        font-size: 20px;
+    }
 }
 
 @media screen and (min-width:720px) {
     .home1 .secContainer .homeText {
         padding: 1rem 10rem;
     }
+
     .home1 .secContainer .homeText .title {
         font-size: 2.7rem;
         margin: auto;
         line-height: 4rem
     }
+
     .home1 .secContainer .homeText .title .subTitle {
-         width: 70%;
+        width: 70%;
     }
-    }
+}

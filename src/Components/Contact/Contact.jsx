@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import "./Contact.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Footer from "../Footer/Footer";
+
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -24,69 +28,76 @@ const ContactUsPage = () => {
     );
   };
 
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   return (
-    <div className="box">
-      <div className="form">
-        <h2>Contact Us</h2>
-
-        <div className="input">
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            placeholder="Your Name"
-          />
-          <i />
-        </div>
-
-        <div className="input">
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            placeholder="Your Email"
-          />
-          <i />
-        </div>
-
-        <div className="input">
-          <input
-            type="text"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-            placeholder="Subject"
-          />
-          <i />
-        </div>
-
-        <div className="input">
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Your Message"
-            required
-          />
-          <i />
-        </div>
-
-        <button onClick={sendMessage}>Send Message</button>
-
-        <div className="link2">
-          <p>
-            If you don't have an account, create one: <br />{" "}
-            <Link to="/registration">Sign up</Link>
-          </p>
+    <React.Fragment>
+      <div className="Contact-block">
+        <div className="Container-contact">
+          <div className="image-of-contact">
+            <h2>Get in Touch!</h2>
+            <p>We will love to talk to you, get started by filling the details below and submit.</p>
+          </div>
+          <div className="contant-of-contact">
+            <h3 className="text-contact">Contact US</h3>
+            <form className="coll">
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Your Name"
+                className="input-feild5"
+              />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="Your Email"
+                className="input-feild5"
+              />
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                placeholder="Subject"
+                className="input-feild5"
+              />
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Your Message"
+                required
+                className="input-feild5"
+              />
+              <button
+                className="btn-readyc3"
+                type="submit"
+                onClick={sendMessage}
+              >
+                Send Message
+              </button>
+            </form>
+            <div className="link2">
+              <p>
+                If you don't have an account, create one: <br />
+                <Link to="/registration">Sign up</Link>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </React.Fragment>
   );
 };
 

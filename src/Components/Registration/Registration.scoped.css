@@ -1,51 +1,131 @@
-.bootstrap-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+.registration-block {
+    margin: auto;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    height: 100vh;
 }
 
-.bootstrap-switch-input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+
+.Container-register {
+    border-radius: 30px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.bootstrap-switch-slider {
+.Container-register .image-of-register {
+    width: 35%;
+    background-image: url('/src/im&ve/sidenav2.jpg');
+    background-position: center;
+    background-size: 100% 100%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container-register .image-of-register h2{
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 70%;
+    color: #f9f9f9;
+}
+
+.contant-of-rigester {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 65%;
+    height: 100%;
+}
+
+.text-signup {
+    border-top-right-radius: 30px;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    padding: 20px;
+    color: #44576d;
+    margin: auto;
+
+}
+
+.contant-of-rigester form {
+    border-bottom-right-radius: 30px;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.contant-of-rigester form .input-feild {
+    width: 47%;
+    margin: 18px auto;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px 5px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.contant-of-rigester form .input-feild::placeholder{
+padding-left: 5px;
+}
+
+.password-input-wrapper{
+    width: 47%;
+    background: #f9f9f9;
+}
+
+.password-toggle-btn{
     position: absolute;
+    top: 53%;
+    right: 13%;
+    margin-right: 20px;
+}
+
+.password-toggle-btn2{
+    position: absolute;
+    top: 64%;
+    right: 37%;
+    margin-right: 20px;
+}
+
+.btn-ready3 {
+    width: 40%;
+    height: 3rem;
+    border: none;
+    outline: none;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1.5rem;
+    background: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px auto;
 }
 
-.bootstrap-switch-slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-.bootstrap-switch-input:checked+.bootstrap-switch-slider:before {
-    transform: translateX(26px);
-}
-
-.registration-label {
-    margin-left: 10px;
-    line-height: 34px;
-    vertical-align: middle;
-}
-
-.registration-label span{
-    font-weight: 700;
-    font-size: 16px;
+.btn-ready3:hover {
+    background-color: var(--background3);
+    color: var(--background);
+    border: none;
+    transition: 0.3s ease-in-out;
+    transform: translateY(-3px);
+    transform: scale(3px);
 }

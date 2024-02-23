@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.scoped.css";
 
 
@@ -18,10 +18,15 @@ import img3 from "../../im&ve/3.jpg";
 import img4 from "../../im&ve/4.jpg";
 
 // import required modules
-import { Autoplay ,Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
+
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Home = () => {
-
+  useEffect(() => {
+    Aos.init({ duration: 2000 })
+  }, []);
 
 
   return (
@@ -41,13 +46,13 @@ const Home = () => {
           disableOnInteraction: false,
         }}
         loop={true}
-        modules={[Autoplay, Pagination]}
+        modules={[ Autoplay, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
           <img src={img1} alt="" />
           <div className="text-content">
-            <h2 className="title">
+            <h2 data-aos="zoom-out-right" className="title">
               Sea <span>Season</span>
             </h2>
             <p>
@@ -67,7 +72,7 @@ const Home = () => {
         <SwiperSlide>
           <img src={img2} alt="" />
           <div className="text-content">
-            <h2 className="title">
+            <h2 data-aos="zoom-out-right" className="title">
               Pyramids <span>Season</span>
             </h2>
             <p>
@@ -87,7 +92,7 @@ const Home = () => {
         <SwiperSlide>
           <img src={img3} alt="" />
           <div className="text-content">
-            <h2 className="title">
+            <h2 data-aos="zoom-out-right" className="title">
               Islamic <span>Season</span>
             </h2>
             <p>
@@ -107,7 +112,7 @@ const Home = () => {
         <SwiperSlide>
           <img src={img4} alt="" />
           <div className="text-content">
-            <h2 className="title">
+            <h2 data-aos="zoom-out-right" className="title">
               Sea <span>Season</span>
             </h2>
             <p>
@@ -124,7 +129,6 @@ const Home = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-      
     </div>
   );
 };

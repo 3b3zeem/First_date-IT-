@@ -1,194 +1,185 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Footer.css";
 
+import { FiSend } from "react-icons/fi";
+
+import videoFooter from "../../im&ve/waves_Footer.mp4";
+import { BiLogoMediumOld } from "react-icons/bi";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { AiFillYoutube } from "react-icons/ai";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaTripadvisor } from "react-icons/fa";
+import { FiChevronRight } from "react-icons/fi";
+
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 const Footer = () => {
-    return (
-        <div className="part7">
-            <div className="note">
-                <ul className="list1">
-                    <li>
-                        <a href="#" rel="nofollow">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                </ul>
-            </div>
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
 
-            <hr className="hor1" />
+  return (
+    <section className="footer">
+      <div className="videoDiv">
+        <video src={videoFooter} loop autoPlay muted type="video/mp4" />
+      </div>
 
-            <div className="contenterforlinks">
-                <div className="footer-nav" id="unique">
-                    <ul className="list2">
-                        <li>
-                            <h2 className="title">About Us</h2>
-                        </li>
-                        <li>
-                            <p className="about">
-                                <span>loram Software</span> is a technology company you can
-                                trust. For over # years we have been delivering excellence
-                                through our products and services. Our deep expertise in travel
-                                technology has enabled us to create one of the best travel
-                                software solutions
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div className="footer-nav">
-                    <ul className="list2">
-                        <li>
-                            <h2 className="title">Social Media</h2>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                twitter
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                YouTube
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                instagram
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                Android App
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                iOS App
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="footer-nav">
-                    <ul className="list2">
-                        <li>
-                            <h2 className="title">Sitemap</h2>
-                        </li>
-                        <li>
-                            <a href="#" target="_self">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" target="_self">
-                                Clients
-                            </a>
-                        </li>
+      <div className="secContent container">
+        <div className="contactDiv flex">
+          <div data-aos="fade-up" className="textDiv">
+            <small>KEEP IN TOUCH</small>
+            <h2>Travel with us</h2>
+          </div>
 
-                        <li>
-                            <a href="#" target="_blank" rel="nofollow">
-                                partners
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" target="_blank">
-                                News
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" target="_self">
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="footer-nav">
-                    <ul className="list2">
-                        <li>
-                            <h2 className="title">Our Solutions</h2>
-                        </li>
-                        <li>
-                            <a href="#" target="_self">
-                                travel
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" target="_self">
-                                transport
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" target="_self">
-                                hotls
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" target="_blank" rel="nofollow">
-                                nightlife
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="footer-nav" id="unique2">
-                    <div className="title">
-                        <h2>Subscribe for everything new</h2>
-                    </div>
-                    <div className="news">
-                        <form name="form" className="form1" id="Formv" method="post">
-                            <input
-                                type="email"
-                                className="form__field_new"
-                                placeholder="Email*"
-                                name="email"
-                                id="email"
-                            />
-                            <label htmlFor="email" className="notefication"></label>
-                            <br />
-                            <button type="submit" className="bot" id="bott">
-                                submit
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <hr className="hor1" />
-
-            <div className="servicesCatalog">
-                <div className="margin1">
-                    <div className="title">
-                        <h2>Service Catalog</h2>
-                    </div>
-                    <div className="services">
-                        <ul className="list3">
-                            <li>
-                                <a href="#">Lorem ipsum dolor sit amet.</a>
-                            </li>
-                            <li>
-                                <a href="#">Lorem ipsum dolor sit amet.</a>
-                            </li>
-                            <li>
-                                <a href="#">Lorem ipsum dolor sit amet.</a>
-                            </li>
-                            <li>
-                                <a href="#">Lorem ipsum dolor sit amet.</a>
-                            </li>
-                            <li>
-                                <a href="">Lorem ipsum dolor sit amet.</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <p className="develop">© 2023&nbsp;Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum</p>
-                </div>
-            </div>
+          <div className="inputDive flex">
+            <input
+              data-aos="fade-right"
+              type="text"
+              placeholder="Enter Email Address"
+            />
+            <button data-aos="fade-left" className="btn flex" type="submit">
+              SEND <FiSend className="icon" />
+            </button>
+          </div>
         </div>
-    );
+
+        <div className="footerCard flex">
+          <div className="footerIntro flex">
+            <div data-aos="fade-down" className="logoDiv">
+              <a href="/" className="logo flex">
+                <BiLogoMediumOld className="icon" /> MomentumTravel.
+              </a>
+            </div>
+
+            <div data-aos="fade-up" className="footerParagraph">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Exercitationem rem expedita tenetur neque adipisci fuga
+              consequatur iure, quisquam alias a molestiae ullam unde aliquam
+              laborum inventore quod pariatur.
+            </div>
+
+            <div data-aos="fade-up" className="footerSocials flex">
+              <AiOutlineTwitter className="icon" />
+              <AiFillYoutube className="icon" />
+              <AiFillInstagram className="icon" />
+              <FaTripadvisor className="icon" />
+            </div>
+          </div>
+
+          <div className="footerLinks grid">
+            {/* Group One */}
+            <div
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              className="linkGroup"
+            >
+              <span className="groupTitle">OUR AGENCY</span>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Services
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Insurance
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Agency
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Tourism
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Payment
+              </li>
+            </div>
+
+            {/* Group Two */}
+            <div
+              data-aos="fade-up"
+              data-aos-duration="4000"
+              className="linkGroup"
+            >
+              <span className="groupTitle">PARTNERS</span>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Booking
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                RentCars
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                HotelWorld
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Trivago
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                TripAdvisor
+              </li>
+            </div>
+
+            {/* Group Three */}
+            <div
+              data-aos="fade-up"
+              data-aos-duration="5000"
+              className="linkGroup"
+            >
+              <span className="groupTitle">LAST MINUTE</span>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Cairo
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                London
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                California
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Indonesia
+              </li>
+
+              <li className="footerList flex">
+                <FiChevronRight className="icon" />
+                Rio de Janeiro
+              </li>
+            </div>
+          </div>
+
+          <div className="footerDiv flex">
+            <small>BET TRAVEL WEBSITE THEME</small>
+            <small>
+              COPYRIGHTS RESERVED - <BiLogoMediumOld className="icon" />
+            </small>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 export default Footer;

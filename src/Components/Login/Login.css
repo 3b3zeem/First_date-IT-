@@ -1,0 +1,150 @@
+.Login-block {
+    margin: auto;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    height: 100vh;
+}
+
+.Container-Login {
+    border-radius: 30px;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.Container-Login .image-of-Login {
+    width: 35%;
+    background-image: url('/src/im&ve/sidenav2.jpg');
+    background-position: center;
+    background-size: 100% 100%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container-Login .image-of-Login h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 70%;
+    color: #f9f9f9;
+}
+
+.contant-of-Login {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 65%;
+    height: 100%;
+}
+
+.text-Login {
+    border-top-right-radius: 30px;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    padding: 20px;
+    color: #44576d;
+    margin: auto;
+
+}
+
+.contant-of-Login .coll1 {
+    border-bottom-right-radius: 30px;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.contant-of-Login form .input-feild2 {
+    width: 85%;
+    margin: 0.5rem auto;
+    border: none;
+    color: var(--text-primary2);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: left;
+    transition: all .4s ease;
+}
+
+.contant-of-Login form .input-feild2:nth-child(1){
+    margin-bottom: 10px;
+}
+
+.contant-of-Login form .input-feild2:nth-child(2){
+margin-bottom: 25px;
+}
+
+.contant-of-Login form .input-feild2::placeholder {
+    padding-left: 5px;
+}
+
+.btnHiddenPass {
+    position: absolute;
+    top: 46.7%;
+    right: 25%;
+    margin-right: 20px;
+    background-color: transparent;
+}
+
+.btn-ready4 {
+    width: 50%;
+    height: 3rem;
+    border: none ;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px auto;
+    transition: .3s ease;
+    background-color: #8598b6;
+    color: var(--text-primary2);
+}
+
+.btn-ready4:hover {
+    background-color: var(--background3);
+    color: var(--background);
+    border: none;
+    transition: 0.3s ease-in-out;
+    transform: translateY(-3px);
+    transform: scale(3px);
+}
+
+
+.link2 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.link2 a {
+    margin: 10px 0;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.1s ease;
+}
+
+.link2 a:hover {
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+p {
+    font-size: 18px;
+    color: #44576d;
+}
