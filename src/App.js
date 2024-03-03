@@ -22,6 +22,7 @@ import AdDetails from "./Components/Bages_route/AdDetails";
 import AddAdvertisement from "./Components/Bages_route/AddAdvertisement";
 import Advertisements from "./Components/Bages_route/Advertisements";
 import EditAdvertisement from "./Components/Bages_route/EditAdvertisement";
+import Companyp from "./Components/Companyprofile/Companyp";
 
 function App() {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -110,6 +111,7 @@ function App() {
           element={<EditAdvertisement />}
         />
         <Route path="/userProfile" element={<UserProfile />} />
+        <Route path="/company" element={<Companyp />} />
       </Routes>
     </div>
   );

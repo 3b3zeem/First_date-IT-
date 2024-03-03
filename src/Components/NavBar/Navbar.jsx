@@ -76,6 +76,11 @@ const Navbar = () => {
                 User
               </Link>
             </li>
+            <li className="navItem">
+              <Link to="/company" className="navLink">
+                Company
+              </Link>
+            </li>
           </ul>
           <div onClick={removeNav} className="closeNavbar">
             <AiFillCloseCircle className="icon menuIcon" />
