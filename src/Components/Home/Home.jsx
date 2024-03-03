@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
 import "swiper/css";
+import 'swiper/css/effect-fade';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
@@ -18,7 +19,7 @@ import img3 from "../../im&ve/3.jpg";
 import img4 from "../../im&ve/4.jpg";
 
 // import required modules
-import { Autoplay, Pagination } from "swiper/modules";
+import { EffectFade, Autoplay, Pagination } from "swiper/modules";
 
 import Aos from 'aos'
 import 'aos/dist/aos.css'
@@ -37,6 +38,7 @@ const Home = () => {
         }}
         slidesPerView={1}
         spaceBetween={30}
+        effect={'fade'}
         pagination={{
           dynamicBullets: true,
           clickable: true,
@@ -46,7 +48,7 @@ const Home = () => {
           disableOnInteraction: false,
         }}
         loop={true}
-        modules={[ Autoplay, Pagination]}
+        modules={[EffectFade, Autoplay, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>

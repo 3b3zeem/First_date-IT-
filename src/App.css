@@ -159,7 +159,7 @@ input {
   position: fixed;
   bottom: 40px;
   right: 25px;
-  z-index: 20;
+  z-index: 200;
 }
 
 .icon-style{
@@ -192,6 +192,17 @@ input {
   }
 }
 
+@media screen and (max-width: 402px){
+  .icon-position{
+    right: 50px;
+  }
+
+  .icon-style{
+    border-radius: 1rem;
+  height: 60px;
+  width: 40px;
+  }
+}
 
 @media screen and (min-width: 556px){
   .mainContent{

@@ -8,8 +8,8 @@ import Footer from "../Footer/Footer";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-const Products = () => {
-  const [advertisement, setProducts] = useState([]);
+const Advertisements = () => {
+  const [advertisement, setAdvertisement] = useState([]);
 
   useEffect(() => {
     getAllProducts();
@@ -17,9 +17,9 @@ const Products = () => {
 
   //All products
   const getAllProducts = () => {
-    fetch("https://localhost:7214/GetAllAdvertisement")
+    fetch("https://localhost:7120/api/advertisements")
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) => setAdvertisement(data));
   };
 
   // Delete products
@@ -29,7 +29,7 @@ const Products = () => {
       showCancelButton: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://localhost:7214/${advertisementId}`, {
+        fetch(`https://localhost:7120/api/advertisements/${advertisementId}`, {
           method: "DELETE",
         })
           .then(() => getAllProducts())
@@ -46,41 +46,41 @@ const Products = () => {
     <>
       <Chome />
       <div className="container-product">
-        <h1>Advertisments</h1>
+        <h1>Advertisements</h1>
         <div className="container-product-cards">
           {advertisement.map((advertisement) => {
             return (
-              <div className="container-product-card" key={advertisement.id}>
+              <div className="container-product-card" key={advertisement.adID}>
                 <div className="one_card" style={{ width: "350px" }}>
                   <div className="card-body">
                     <h5 className="card-title1">
-                      <u>Title</u> : <span>{advertisement.advert_name}</span>
+                      <u>Title</u> : <span>{advertisement.title}</span>
                     </h5>
                     <p className="card-text">
-                      <u>Details</u> : <span>{advertisement.details}</span>
+                      <u>Details</u> : <span>{advertisement.description}</span>
                     </p>
                     <p className="card-text">
-                      <u>Post Date</u> : <span>{advertisement.post_date}</span>
+                      <u>validFrom</u> : <span>{advertisement.validFrom}</span>
                     </p>
                     <p className="card-text">
-                      <u>Expiry Date</u> : <span>{advertisement.expiry_date}</span>
+                      <u>Expiry Date</u> : <span>{advertisement.validTo}</span>
                     </p>
                   </div>
                   <div className="buttons">
                     <button
-                      onClick={() => deleteProduct(advertisement.id)}
+                      onClick={() => deleteProduct(advertisement.adID)}
                       className="btn-Home"
                     >
                       <span>Delete</span>
                     </button>
                     <button className="btn-Home">
-                      <Link to={`/advertisements/${advertisement.id}`} className="Link">
+                      <Link to={`/advertisements/${advertisement.adID}`} className="Link">
                         View
                       </Link>
                     </button>
                     <button className="btn-Home">
                       <Link
-                        to={`/advertisements/${advertisement.id}/edit`}
+                        to={`/advertisements/${advertisement.adID}/edit`}
                         className="Link"
                       >
                         Edit
@@ -96,7 +96,7 @@ const Products = () => {
           <div className="disp-flex-add">
             <h1 className="dispText-add">Add New Advertisment From Here!</h1>
             <button className="btn-Home-add1">
-              <Link to="/products/add" className="Link-add1">
+              <Link to="/advertisements/add" className="Link-add1">
                 Add New Advertisment
               </Link>
             </button>
@@ -108,4 +108,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Advertisements;

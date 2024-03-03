@@ -111,7 +111,7 @@ const Popular = () => {
           <div className="mainContent grid">
             {Card.map(({ id, imgSrc, Title, location, grade }) => {
               return (
-                <div data-aos="zoom-in-right" className="singleDestination">
+                <div key={id} data-aos="zoom-in-right" className="singleDestination">
                   <div className="detImage">
                     <img src={imgSrc} alt="Title" />
                     <div className="overlayInfo">

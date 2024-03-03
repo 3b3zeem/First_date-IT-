@@ -2,34 +2,34 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const EditProduct = () => {
+const EditAdvertisement = () => {
   let navigate = useNavigate();
-  let { productId } = useParams(); // Assuming you have a route parameter for the product ID
+  let { advertisementId } = useParams();
+ // Assuming you have a route parameter for the product ID
 
-  const [advert_name, setAdvert_name] = useState("");
-  const [postDate, setPostDate] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
-  const [details, setDetails] = useState("");
+  const [title, setTitle] = useState("");
+  const [validFrom, setValidFrom] = useState("");
+  const [validTo, setValidTo] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
-    // Fetch existing product data when the component mounts
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `https://localhost:7214/GetAdvertisementById/${productId}`
+          `https://localhost:7120/api/advertisements/${advertisementId}`
         );
         const product = response.data;
-        setAdvert_name(product.advert_name);
-        setDetails(product.details);
-        setPostDate(product.postDate);
-        setExpiryDate(product.expiryDate);
+        setTitle(product.title);
+        setDescription(product.description);
+        setValidFrom(product.validFrom);
+        setValidTo(product.validTo);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
     };
 
     fetchProduct();
-  }, [productId]);
+  }, [advertisementId]);
 
   const handleInputChange = (setter, value) => {
     setter(value);
@@ -38,14 +38,14 @@ const EditProduct = () => {
   const formSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://localhost:7214/UpdateAdvertisement/${productId}`, {
-        advert_name,
-        details,
-        postDate,
-        expiryDate,
+      await axios.put(`https://localhost:7120/api/advertisements/${advertisementId}`, {
+        title,
+        description,
+        validFrom,
+        validTo,
       });
       console.log("Data updated successfully!");
-      navigate("/products");
+      navigate("/advertisements");
     } catch (error) {
       console.error("Error updating data:", error);
     }
@@ -53,7 +53,7 @@ const EditProduct = () => {
 
   return (
     <div>
-      <h1 className="mb-4">Edit Product</h1>
+      <h1 className="mb-4">Edit Product {advertisementId}</h1>
       <form className="row g-3" onSubmit={formSubmit}>
         {/* Title */}
         <div className="col-md-6">
@@ -64,8 +64,8 @@ const EditProduct = () => {
             type="text"
             className="form-control"
             id="inputTitle"
-            value={advert_name}
-            onChange={(e) => handleInputChange(setAdvert_name, e.target.value)}
+            value={title}
+            onChange={(e) => handleInputChange(setTitle, e.target.value)}
           />
         </div>
         {/* Description */}
@@ -77,8 +77,8 @@ const EditProduct = () => {
             type="text"
             className="form-control"
             id="inputDescription"
-            value={details}
-            onChange={(e) => handleInputChange(setDetails, e.target.value)}
+            value={description}
+            onChange={(e) => handleInputChange(setDescription, e.target.value)}
           />
         </div>
         {/* Description */}
@@ -90,8 +90,8 @@ const EditProduct = () => {
             type="datetime-local"
             className="form-control"
             id="inputPostDate"
-            value={postDate} // Add value attribute to control input
-            onChange={(e) => handleInputChange(setPostDate, e.target.value)}
+            value={validFrom}
+            onChange={(e) => handleInputChange(setValidFrom, e.target.value)}
           />
         </div>
         {/* Description */}
@@ -103,8 +103,8 @@ const EditProduct = () => {
             type="datetime-local"
             className="form-control"
             id="inputExpiryDate"
-            value={expiryDate} // Add value attribute to control input
-            onChange={(e) => handleInputChange(setExpiryDate, e.target.value)}
+            value={validTo} // Add value attribute to control input
+            onChange={(e) => handleInputChange(setValidTo, e.target.value)}
           />
         </div>
         <div className="col-12">
@@ -117,4 +117,4 @@ const EditProduct = () => {
   );
 };
 
-export default EditProduct;
+export default EditAdvertisement;

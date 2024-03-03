@@ -7,9 +7,9 @@ const Loader = () => {
     <>
       <div className="Loader">
         <div className="loader-spanner">
-          <ClimbingBoxLoader size="20" color="hsl(199, 100%, 33%)" />
+          <ClimbingBoxLoader size="20px" color="hsl(199, 100%, 33%)" />
         </div>
-        <h2>Loading<PulseLoader className="load" size="8"  color="hsl(199, 100%, 33%)" /></h2>
+        <h2>Loading<PulseLoader className="load" size="8px"  color="hsl(199, 100%, 33%)" /></h2>
       </div>
     </>
   );

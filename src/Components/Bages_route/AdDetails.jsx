@@ -10,12 +10,12 @@ import Footer from "../Footer/Footer";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-const ProductDetails = () => {
+const AdDetails = () => {
     let { advertisementId } = useParams();
 
     const [product, setProduct] = useState([]);
     useEffect(() => {
-        fetch(`https://localhost:7214/GetAdvertisementById/${advertisementId}`)
+        fetch(`https://localhost:7120/api/advertisements/${advertisementId}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
@@ -66,16 +66,16 @@ const ProductDetails = () => {
                         <a className="product-subtitle" href="aa">
                             COMPANY NAME
                         </a>
-                        <h1 className="product-title">Ad Name: {product.advert_name}</h1>
-                        <p className="product-text">Description: {product.details}</p>
+                        <h1 className="product-title">Ad Name: {product.title}</h1>
+                        <p className="product-text">Description: {product.description}</p>
 
                         <div className="wrapper">
 
                             <p className="p1">
-                                Post_Date : {product.post_date}
+                                Post_Date : {product.validFrom}
                             </p>
                             <p className="p1">
-                                Expiry_Date : {product.expiry_date}
+                                Expiry_Date : {product.validTo}
                             </p>
                             <p className="p1">Price : ${totalPrice}</p>
 
@@ -131,4 +131,4 @@ const ProductDetails = () => {
     );
 };
 
-export default ProductDetails;
+export default AdDetails;

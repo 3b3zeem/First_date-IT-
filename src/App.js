@@ -10,10 +10,6 @@ import Testimation from "./Components/Testimation/Testimation";
 import Footer from "./Components/Footer/Footer";
 import Middle from "./Components/Home/Middle";
 import Timeline from "./Components/Home/Timeline";
-import Products from "./Components/Bages_route/Products";
-import AddProduct from "./Components/Bages_route/AddProduct";
-import ProductDetails from "./Components/Bages_route/ProductDetails";
-import EditProduct from "./Components/Bages_route/EditProduct";
 import useLocalStorage from "use-local-storage";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import { useEffect, useState } from "react";
@@ -21,6 +17,11 @@ import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
 import Popular from "./Components/Popular/Popular";
 import About from "./Components/About/About";
 import Loader from "./Components/Loader/Loader";
+import Trip from "./Components/Trip/Trip";
+import AdDetails from "./Components/Bages_route/AdDetails";
+import AddAdvertisement from "./Components/Bages_route/AddAdvertisement";
+import Advertisements from "./Components/Bages_route/Advertisements";
+import EditAdvertisement from "./Components/Bages_route/EditAdvertisement";
 
 function App() {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -85,7 +86,8 @@ function App() {
             <>
               <Home />
               <Popular />
-              <Timeline />
+              {/* <Timeline /> */}
+              <Trip />
               <Ready />
               <Middle />
               <Testimation />
@@ -97,15 +99,15 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/advertisements" element={<Products />} />
-        <Route path="/advertisements/add" element={<AddProduct />} />
+        <Route path="/advertisements" element={<Advertisements />} />
+        <Route path="/advertisements/add" element={<AddAdvertisement />} />
         <Route
           path="/advertisements/:advertisementId"
-          element={<ProductDetails />}
+          element={<AdDetails />}
         />
         <Route
           path="/advertisements/:advertisementId/edit"
-          element={<EditProduct />}
+          element={<EditAdvertisement />}
         />
         <Route path="/userProfile" element={<UserProfile />} />
       </Routes>

@@ -26,8 +26,8 @@
 
 .con .ready .disp-flex h1 {
     font-size: 40px;
-    font-weight: 900;
-color: var(--text-primary);
+    font-weight: 400;
+    color: var(--text-primary);
 }
 
 .con .ready .disp-flex .btn-ready {
@@ -42,13 +42,13 @@ color: var(--text-primary);
     color: var(--text-primary);
     font-size: 18px;
     font-weight: 500;
+    transition: 0.3s ease;
 }
 
 .con .ready .disp-flex .btn-ready:hover {
     background-color: var(--background);
     color: var(--text-primary);
     border: none;
-    transition: 0.3s ease;
 }
 
 .con .T-Partner{

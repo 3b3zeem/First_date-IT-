@@ -18,21 +18,20 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const About = () => {
-
-    useEffect(() => {
-        Aos.init({ duration: 2000 });
-      }, []);
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
   return (
     <>
       <div className="About-us-all">
         <div className="about-us-title">
           <h1>About Us</h1>
           <p>
-            At <span>MomentumTravel</span> ,we are dedicated to providing unforgettable
-            travel experiences to our customers. We strive to make travel
-            accessible, enjoyable, and hassle-free for all our clients. Our team
-            is committed to delivering exceptional service and ensuring that
-            every journey with us is filled with adventure, discovery, and
+            At <span>MomentumTravel</span> ,we are dedicated to providing
+            unforgettable travel experiences to our customers. We strive to make
+            travel accessible, enjoyable, and hassle-free for all our clients.
+            Our team is committed to delivering exceptional service and ensuring
+            that every journey with us is filled with adventure, discovery, and
             memories that last a lifetime..
           </p>
           <ul className="list-social">
@@ -66,13 +65,17 @@ const About = () => {
       </div>
       <section className="aboutus-home">
         <div data-aos="fade-right" className="aboutus-home-left">
-          <img  src={image1} alt="" />
+          <img src={image1} alt="" />
         </div>
         <div className="aboutus-home-right">
           <h2 data-aos="fade-left" className="aboutus-home-heading">
             A Technology Company you can Trust!
           </h2>
-          <p data-aos="fade-left" data-aos-duration='3000' className="aboutus-home-para">
+          <p
+            data-aos="fade-left"
+            data-aos-duration="3000"
+            className="aboutus-home-para"
+          >
             "Our advanced travel system seamlessly integrates booking, itinerary
             management, and real-time updates for a hassle-free travel
             experience."
@@ -84,7 +87,7 @@ const About = () => {
         </div>
       </section>
 
-      <section  id="workFlow">
+      <section id="workFlow">
         <h2 data-aos="zoom-in" className="heading">
           The Crucial Moment in Establishing a Travel Company.
         </h2>
@@ -95,18 +98,26 @@ const About = () => {
         </p>
         <div className="num-container">
           <div data-aos="fade-right" className="num-item">
-            <span >
+            <span>
               27,882 <br />
               Customers
             </span>
           </div>
-          <div data-aos="fade-right" data-aos-duration='3000' className="num-item">
-            <span >
+          <div
+            data-aos="fade-right"
+            data-aos-duration="3000"
+            className="num-item"
+          >
+            <span>
               90% <br />
               Action Plans
             </span>
           </div>
-          <div data-aos="fade-right" data-aos-duration='4000' className="num-item">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="4000"
+            className="num-item"
+          >
             <span>
               70,592 <br />
               Downloads
@@ -118,7 +129,8 @@ const About = () => {
       <section id="goal">
         <div className="goal-left">
           <h2 data-aos="fade-right">
-            <GoGoal className="iconGoal"/>Our Goal
+            <GoGoal className="iconGoal" />
+            Our Goal
           </h2>
           <p data-aos="fade-right" data-aos-duration="4000">
             Our goal is to provide unparalleled service and satisfaction to our
@@ -154,31 +166,135 @@ const About = () => {
             <img src={image1} alt="" />
             <h5 className="member-name">Ebrahim Salah</h5>
             <span className="role">Front End</span>
+            <div className="social-media-links">
+              <a href="#/" target="_blank">
+                <FaTwitter />
+              </a>
+              <a href="#/" target="_blank">
+                <FaFacebook />
+              </a>
+              <a href="#/" target="_blank">
+                <FaInstagram />
+              </a>
+              <a href="#/" target="_blank">
+                <FaGithub />
+              </a>
+            </div>
           </div>
-          <div data-aos="fade-down"  data-aos-duration='3000' className="team-item">
+          <div
+            data-aos="fade-down"
+            data-aos-duration="3000"
+            className="team-item"
+          >
             <img src={image1} alt="" />
             <h5 className="member-name">Ahmed Mostafa</h5>
             <span className="role">Front End</span>
+            <div className="social-media-links">
+              <a href="#/" target="_blank">
+                <FaTwitter />
+              </a>
+              <a href="#/" target="_blank">
+                <FaFacebook />
+              </a>
+              <a href="#/" target="_blank">
+                <FaInstagram />
+              </a>
+              <a href="#/" target="_blank">
+                <FaGithub />
+              </a>
+            </div>
           </div>
-          <div data-aos="fade-up" data-aos-duration='4000' className="team-item">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="4000"
+            className="team-item"
+          >
             <img src={image1} alt="" />
             <h5 className="member-name">Mostafa Hossam</h5>
             <span className="role">Front End</span>
+            <div className="social-media-links">
+              <a href="#/" target="_blank">
+                <FaTwitter />
+              </a>
+              <a href="#/" target="_blank">
+                <FaFacebook />
+              </a>
+              <a href="#/" target="_blank">
+                <FaInstagram />
+              </a>
+              <a href="#/" target="_blank">
+                <FaGithub />
+              </a>
+            </div>
           </div>
-          <div data-aos="fade-down" data-aos-duration='5000' className="team-item">
+          <div
+            data-aos="fade-down"
+            data-aos-duration="5000"
+            className="team-item"
+          >
             <img src={image1} alt="" />
             <h5 className="member-name">Mohamed Ayman</h5>
             <span className="role">Back End</span>
+            <div className="social-media-links">
+              <a href="#/" target="_blank">
+                <FaTwitter />
+              </a>
+              <a href="#/" target="_blank">
+                <FaFacebook />
+              </a>
+              <a href="#/" target="_blank">
+                <FaInstagram />
+              </a>
+              <a href="#/" target="_blank">
+                <FaGithub />
+              </a>
+            </div>
           </div>
-          <div data-aos="fade-up" data-aos-duration='6000' className="team-item">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="6000"
+            className="team-item"
+          >
             <img src={image1} alt="" />
             <h5 className="member-name">Amr Talat</h5>
             <span className="role">Back End</span>
+            <div className="social-media-links">
+              <a href="#/" target="_blank">
+                <FaTwitter />
+              </a>
+              <a href="#/" target="_blank">
+                <FaFacebook />
+              </a>
+              <a href="#/" target="_blank">
+                <FaInstagram />
+              </a>
+              <a href="#/" target="_blank">
+                <FaGithub />
+              </a>
+            </div>
           </div>
-          <div data-aos="fade-down" data-aos-duration='7000' className="team-item">
+          <div
+            data-aos="fade-down"
+            data-aos-duration="7000"
+            className="team-item"
+          >
             <img src={image1} alt="" />
             <h5 className="member-name">Gerges Malak</h5>
             <span className="role">Back End</span>
+            <div className="social-media-links">
+              <a href="#/" target="_blank">
+                <FaTwitter />
+              </a>
+              <a href="#/" target="_blank">
+                <FaFacebook />
+              </a>
+              <a href="#/" target="_blank">
+                <FaInstagram />
+              </a>
+              <a href="#/" target="_blank">
+                <FaGithub />
+              </a>
+            </div>
           </div>
         </div>
       </section>
