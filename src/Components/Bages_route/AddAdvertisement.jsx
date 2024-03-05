@@ -10,6 +10,7 @@ const AddAdvertisement = () => {
   const [validFrom, setValidFrom] = useState("");
   const [validTo, setValidTo] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
 
   const handleInputChange = (setter, value) => {
     setter(value);
@@ -30,6 +31,7 @@ const AddAdvertisement = () => {
           description: description,
           validFrom: validFrom,
           validTo: validTo,
+          price: price,
         }),
       })
         .then((response) => response.json())
@@ -123,6 +125,18 @@ const AddAdvertisement = () => {
               id="inputDescription"
               onChange={(e) => handleInputChange(setDescription, e.target.value)}
               value={description}
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputDescription" className="form-label">
+              Price
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="inputDescription"
+              onChange={(e) => handleInputChange(setPrice, e.target.value)}
+              value={price}
             />
           </div>
           <div className="col-12">

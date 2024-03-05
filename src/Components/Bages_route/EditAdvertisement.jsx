@@ -11,6 +11,7 @@ const EditAdvertisement = () => {
   const [validFrom, setValidFrom] = useState("");
   const [validTo, setValidTo] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -23,6 +24,7 @@ const EditAdvertisement = () => {
         setDescription(product.description);
         setValidFrom(product.validFrom);
         setValidTo(product.validTo);
+        setPrice(product.price);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -43,6 +45,7 @@ const EditAdvertisement = () => {
         description,
         validFrom,
         validTo,
+        price
       });
       console.log("Data updated successfully!");
       navigate("/advertisements");
@@ -79,6 +82,18 @@ const EditAdvertisement = () => {
             id="inputDescription"
             value={description}
             onChange={(e) => handleInputChange(setDescription, e.target.value)}
+          />
+        </div>
+        <div className="col-md-6">
+          <label htmlFor="inputDescription" className="form-label">
+            Price
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="inputDescription"
+            value={price}
+            onChange={(e) => handleInputChange(setPrice, e.target.value)}
           />
         </div>
         {/* Description */}
