@@ -6,6 +6,7 @@ const AddAdvertisement = () => {
 
   const [title, setTitle] = useState("");
   const [companyID, setCompanyID] = useState(0);
+  const [companyName, setCompanyName] = useState("");
   const [validFrom, setValidFrom] = useState("");
   const [validTo, setValidTo] = useState("");
   const [description, setDescription] = useState("");
@@ -24,6 +25,7 @@ const AddAdvertisement = () => {
         },
         body: JSON.stringify({
           companyID : companyID,
+          companyName: companyName,
           title: title,
           description: description,
           validFrom: validFrom,
@@ -57,6 +59,19 @@ const AddAdvertisement = () => {
               id="inputTitle"
               onChange={(e) => handleInputChange(setCompanyID, e.target.value)}
               value={companyID} // Add value attribute to control input
+            />
+          </div>
+          {/* Title */}
+        <div className="col-md-6">
+            <label htmlFor="inputTitle" className="form-label">
+              Company Name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="inputTitle"
+              onChange={(e) => handleInputChange(setCompanyName, e.target.value)}
+              value={companyName} // Add value attribute to control input
             />
           </div>
           {/* Title */}

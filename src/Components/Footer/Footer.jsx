@@ -48,7 +48,7 @@ const Footer = () => {
           <div className="footerIntro flex">
             <div data-aos="fade-down" className="logoDiv">
               <a href="/" className="logo flex">
-                <BiLogoMediumOld className="icon" /> MomentumTravel.
+                <BiLogoMediumOld className="icon" /> MomentTravel.
               </a>
             </div>
 

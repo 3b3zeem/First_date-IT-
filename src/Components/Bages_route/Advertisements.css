@@ -164,3 +164,16 @@
     transform: translateY(-3px);
     transform: scale(3px);
 }
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-list{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

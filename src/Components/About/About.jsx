@@ -27,7 +27,7 @@ const About = () => {
         <div className="about-us-title">
           <h1>About Us</h1>
           <p>
-            At <span>MomentumTravel</span> ,we are dedicated to providing
+            At <span>MomentTravel</span> ,we are dedicated to providing
             unforgettable travel experiences to our customers. We strive to make
             travel accessible, enjoyable, and hassle-free for all our clients.
             Our team is committed to delivering exceptional service and ensuring
