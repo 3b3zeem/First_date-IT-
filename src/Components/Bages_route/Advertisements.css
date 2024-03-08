@@ -223,3 +223,8 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.container-product .icon{
+font-size: 100px;
+color: gold;
+}

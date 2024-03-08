@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./AdDetails.css";
-
-import { HiPlusSm } from "react-icons/hi";
-import { HiMinusSm } from "react-icons/hi";
-
+import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Footer from "../Footer/Footer";
-
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 const AdDetails = () => {
-  let { advertisementId } = useParams();
+  let { advertisementId, reviewId } = useParams();
+  const [product, setProduct] = useState({});
+  const [reviews, setReviews] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
+  // Function to fetch advertisements
+  const fetchAdvertisements = () => {
     fetch(`https://localhost:7120/api/advertisements/${advertisementId}`)
       .then((response) => {
         if (!response.ok) {
@@ -25,17 +24,42 @@ const AdDetails = () => {
       .then((data) => {
         if (data) {
           setProduct(data);
+          setLoaded(true);
         } else {
           console.error("Empty response received");
         }
       })
       .catch((error) => console.error("Error fetching product:", error));
+  };
+
+  // Function to fetch reviews
+  // const fetchReviews = () => {
+  //   fetch(`https://localhost:7120/api/reviews/${reviewId}`)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       if (data) {
+  //         setReviews(data);
+  //       } else {
+  //         console.error("Empty response received");
+  //       }
+  //     })
+  //     .catch((error) => console.error("Error fetching reviews:", error));
+  // };
+
+  // useEffect to fetch data when component mounts
+  useEffect(() => {
+    fetchAdvertisements();
+    // fetchReviews();
+    Aos.init({ duration: 2000 });
   }, [advertisementId]);
 
   const [qty, setQty] = useState(1);
-//   const productPrice = ;
   const [totalPrice, setTotalPrice] = useState(product.price);
-  const [loaded, setLoaded] = useState(false);
 
   const increaseProductQty = () => {
     const newQty = qty + 1;
@@ -50,11 +74,6 @@ const AdDetails = () => {
       setTotalPrice(newQty * product.price);
     }
   };
-
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-    setLoaded(true);
-  }, []);
 
   return (
     <>
@@ -100,17 +119,21 @@ const AdDetails = () => {
             </div>
           </div>
         </div>
-        <div className="Add">
-          <div className="disp-flex-add">
-            <h1 className="dispText-add">All Advertisements From Here!</h1>
 
-            <button className="btn-Home-add1">
-              <Link to="/products" className="Link-add1">
-                All Advertisements
-              </Link>
-            </button>
-          </div>
-        </div>
+        {/* Section to display reviews */}
+        {/* <div className="reviews">
+          <h2>Reviews</h2>
+          <ul>
+            {reviews.map((review) => (
+              <li key={review.reviewID}>
+                <p>User: {review.userName}</p>
+                <p>Rating: {review.rating}</p>
+                <p>Comment: {review.comment}</p>
+                <p>Date Posted: {review.datePosted}</p>
+              </li>
+            ))}
+          </ul>
+        </div> */}
       </div>
       <Footer />
     </>
