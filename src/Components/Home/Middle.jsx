@@ -23,6 +23,9 @@ const Middle = () => {
         <div className="middle section1">
             <div className="secContainer">
                 <div className="grid">
+                <div className="botext" >
+                    <h3>ACHEVEMENTS</h3>
+                    </div>
                     <div data-aos="zoom-in-up"
                         className="Text">
                         <h1>

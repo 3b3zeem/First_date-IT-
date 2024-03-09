@@ -77,7 +77,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="navItem">
-              <Link to="/company" className="navLink">
+              <Link to="/Company" className="navLink">
                 Company
               </Link>
             </li>
@@ -87,9 +87,6 @@ const Navbar = () => {
           </div>
         </div>
         <div className="headerBtns flex">
-          {/* <button className="btn loginBtn ">
-            <Link to="/registration">Registration</Link>
-          </button> */}
           <button className="btn loginBtn">
             <Link to="/login">Login</Link>
           </button>

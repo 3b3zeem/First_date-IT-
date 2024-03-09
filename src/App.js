@@ -22,7 +22,10 @@ import AdDetails from "./Components/Bages_route/AdDetails";
 import AddAdvertisement from "./Components/Bages_route/AddAdvertisement";
 import Advertisements from "./Components/Bages_route/Advertisements";
 import EditAdvertisement from "./Components/Bages_route/EditAdvertisement";
-import Companyp from "./Components/Companyprofile/Companyp";
+import Companyp from "./Components/Company/Companyp";
+import Companies from "./Components/Company/Companies";
+import AddReviews from "./Components/Bages_route/reviews/AddReviews";
+import ShowReviews from "./Components/Bages_route/reviews/ShowReviews";
 
 function App() {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -111,7 +114,9 @@ function App() {
           element={<EditAdvertisement />}
         />
         <Route path="/userProfile" element={<UserProfile />} />
-        <Route path="/company" element={<Companyp />} />
+        <Route path="Company" element={<Companies />} />
+        <Route path="Company/:companyID" element={<Companyp />} />
+        {/* <Route path="/addReview" element={<AddReviews />} /> */}
       </Routes>
     </div>
   );

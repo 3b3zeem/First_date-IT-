@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
+import "./EditAdvertisement.css";
 const EditAdvertisement = () => {
   let navigate = useNavigate();
   let { advertisementId } = useParams();
- // Assuming you have a route parameter for the product ID
+  // Assuming you have a route parameter for the product ID
 
   const [title, setTitle] = useState("");
   const [validFrom, setValidFrom] = useState("");
@@ -40,13 +40,16 @@ const EditAdvertisement = () => {
   const formSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://localhost:7120/api/advertisements/${advertisementId}`, {
-        title,
-        description,
-        validFrom,
-        validTo,
-        price
-      });
+      await axios.put(
+        `https://localhost:7120/api/advertisements/${advertisementId}`,
+        {
+          title,
+          description,
+          validFrom,
+          validTo,
+          price,
+        }
+      );
       console.log("Data updated successfully!");
       navigate("/advertisements");
     } catch (error) {
@@ -55,79 +58,100 @@ const EditAdvertisement = () => {
   };
 
   return (
-    <div>
-      <h1 className="mb-4">Edit Product {advertisementId}</h1>
-      <form className="row g-3" onSubmit={formSubmit}>
-        {/* Title */}
-        <div className="col-md-6">
-          <label htmlFor="inputTitle" className="form-label">
-            Title
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputTitle"
-            value={title}
-            onChange={(e) => handleInputChange(setTitle, e.target.value)}
-          />
+    <div className="con-Edit-ad">
+      <div className="container-contant-Edit">
+        <h1 className="ad-title-edit">Edit AD {advertisementId}</h1>
+        <div className="form-Edit-ad">
+          <div className="image-of-contact-ad-edit">
+            {/* <h2>Get in Touch!</h2>
+            <p>
+              We will love to talk to you, get started by filling the details
+              below and submit.
+            </p> */}
+          </div>
+          <div className="contant-of-Edit-ad">
+            <form className="coll-Edit" onSubmit={formSubmit}>
+              {/* Title */}
+
+              <div className="only-input-edit">
+                <label htmlFor="inputTitle" className="form-label-edit">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  className="input-feild7"
+                  id="inputTitle"
+                  value={title}
+                  onChange={(e) => handleInputChange(setTitle, e.target.value)}
+                />
+              </div>
+              {/* Description */}
+              <div className="only-input-edit">
+                <label htmlFor="inputDescription" className="form-label-edit">
+                  Description
+                </label>
+                <input
+                  type="text"
+                  className="input-feild7"
+                  id="inputDescription"
+                  value={description}
+                  onChange={(e) =>
+                    handleInputChange(setDescription, e.target.value)
+                  }
+                />
+              </div>
+              <div className="only-input-edit">
+                <label htmlFor="inputDescription" className="form-label-edit">
+                  Price
+                </label>
+                <input
+                  type="text"
+                  className="input-feild7"
+                  id="inputDescription"
+                  value={price}
+                  onChange={(e) => handleInputChange(setPrice, e.target.value)}
+                />
+              </div>
+              {/* Description */}
+              <div className="only-input-edit">
+                <label htmlFor="inputDescription" className="form-label-edit">
+                  Post Date
+                </label>
+                <input
+                  type="datetime-local"
+                  className="input-feild7"
+                  id="inputPostDate"
+                  value={validFrom}
+                  onChange={(e) =>
+                    handleInputChange(setValidFrom, e.target.value)
+                  }
+                />
+              </div>
+              {/* Description */}
+              <div className="only-input-edit">
+                <label htmlFor="inputDescription" className="form-label-edit">
+                  Expiry Date
+                </label>
+                <input
+                  type="datetime-local"
+                  className="input-feild7"
+                  id="inputExpiryDate"
+                  value={validTo} // Add value attribute to control input
+                  onChange={(e) =>
+                    handleInputChange(setValidTo, e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="all-btn-edit">
+                <button type="submit" className="btn-readyc5">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        {/* Description */}
-        <div className="col-md-6">
-          <label htmlFor="inputDescription" className="form-label">
-            Description
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputDescription"
-            value={description}
-            onChange={(e) => handleInputChange(setDescription, e.target.value)}
-          />
-        </div>
-        <div className="col-md-6">
-          <label htmlFor="inputDescription" className="form-label">
-            Price
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputDescription"
-            value={price}
-            onChange={(e) => handleInputChange(setPrice, e.target.value)}
-          />
-        </div>
-        {/* Description */}
-        <div className="col-md-6">
-          <label htmlFor="inputDescription" className="form-label">
-            Post Date
-          </label>
-          <input
-            type="datetime-local"
-            className="form-control"
-            id="inputPostDate"
-            value={validFrom}
-            onChange={(e) => handleInputChange(setValidFrom, e.target.value)}
-          />
-        </div>
-        {/* Description */}
-        <div className="col-md-6">
-          <label htmlFor="inputDescription" className="form-label">
-            Expiry Date
-          </label>
-          <input
-            type="datetime-local"
-            className="form-control"
-            id="inputExpiryDate"
-            value={validTo} // Add value attribute to control input
-            onChange={(e) => handleInputChange(setValidTo, e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Update
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

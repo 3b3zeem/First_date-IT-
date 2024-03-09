@@ -299,3 +299,14 @@
         margin-block-end: 0;
     }
 }
+
+.bot-all-rev{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+.bot-all-rev .btn-Home-add1{ 
+    width: 15rem;
+}

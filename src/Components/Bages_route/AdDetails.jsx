@@ -3,13 +3,18 @@ import { Link, useParams } from "react-router-dom";
 import "./AdDetails.css";
 import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Footer from "../Footer/Footer";
-import Aos from "aos";
-import "aos/dist/aos.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import { FreeMode, Pagination } from "swiper/modules";
+import { FaQuoteRight, FaStar } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
 
 const AdDetails = () => {
-  let { advertisementId, reviewId } = useParams();
+  let { advertisementId } = useParams();
   const [product, setProduct] = useState({});
-  const [reviews, setReviews] = useState([]);
+  const [review, setShowReview] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   // Function to fetch advertisements
@@ -32,30 +37,23 @@ const AdDetails = () => {
       .catch((error) => console.error("Error fetching product:", error));
   };
 
-  // Function to fetch reviews
-  // const fetchReviews = () => {
-  //   fetch(`https://localhost:7120/api/reviews/${reviewId}`)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       if (data) {
-  //         setReviews(data);
-  //       } else {
-  //         console.error("Empty response received");
-  //       }
-  //     })
-  //     .catch((error) => console.error("Error fetching reviews:", error));
-  // };
+  const shoReview = () => {
+    fetch(
+      `https://localhost:7120/api/advertisements/${advertisementId}/reviews`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setShowReview(data.reviews);
+      })
+      .catch((error) => {
+        console.error("Error fetching reviews:", error);
+        setShowReview([]);
+      });
+  };
 
-  // useEffect to fetch data when component mounts
   useEffect(() => {
     fetchAdvertisements();
-    // fetchReviews();
-    Aos.init({ duration: 2000 });
+    shoReview();
   }, [advertisementId]);
 
   const [qty, setQty] = useState(1);
@@ -76,16 +74,16 @@ const AdDetails = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <div className="allll">
         <div className="Advertisement-No">
           <h1>Advertisement No:&nbsp; {advertisementId}</h1>
         </div>
         <div className="container-ads">
           <div className="product-content">
-            <a className="product-subtitle" href="aa">
+            <Link to={`/company/${product.companyId}`} className="product-subtitle">
               {product.companyName}
-            </a>
+            </Link>
             <h1 className="product-title">Ad Name: {product.title}</h1>
             <p className="product-text">Description: {product.description}</p>
 
@@ -119,24 +117,47 @@ const AdDetails = () => {
             </div>
           </div>
         </div>
-
-        {/* Section to display reviews */}
-        {/* <div className="reviews">
-          <h2>Reviews</h2>
-          <ul>
-            {reviews.map((review) => (
-              <li key={review.reviewID}>
-                <p>User: {review.userName}</p>
-                <p>Rating: {review.rating}</p>
-                <p>Comment: {review.comment}</p>
-                <p>Date Posted: {review.datePosted}</p>
-              </li>
-            ))}
-          </ul>
-        </div> */}
+        <div className="swiper">
+          {review.length === 0 ? (
+            <p>No reviews available</p>
+          ) : (
+            <Swiper
+              slidesPerView={3}
+              spaceBetween={30}
+              freeMode={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[FreeMode, Pagination]}
+              className="mySwiper"
+            >
+              {review.map((review) => (
+                <SwiperSlide key={review.reviewID}>
+                  <div className="contant-of-rev">
+                    <div className="rating-quot">
+                      <FaQuoteRight className="quot-icon" />
+                      <div>
+                        <CiStar className="star" />
+                        <FaStar className="star" />
+                        <FaStar className="star" />
+                        <FaStar className="star" />
+                        <FaStar className="star" />
+                      </div>
+                    </div>
+                    <div className="information-of-rating">
+                      <p>User name : {review.userName}</p>
+                      <p>{review.comment}</p>
+                      <p>{review.datePosted}</p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
+        </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

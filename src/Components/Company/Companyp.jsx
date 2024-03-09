@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Companyp.css";
 
 import { FaUser } from "react-icons/fa";
@@ -10,8 +10,25 @@ import { MdContentPaste } from "react-icons/md";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { ImUsers } from "react-icons/im";
+import { useParams } from "react-router-dom";
 
 function Companyp() {
+  let { companyID } = useParams();
+
+  const [onecompany, setOneCompany] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://localhost:7120/api/Company/${companyID}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setOneCompany(data);
+        } else {
+          setOneCompany([data]);
+        }
+      })
+  }, [companyID]);
+
   return (
     <React.Fragment>
       <div className="all-c">
@@ -108,6 +125,30 @@ function Companyp() {
             </ul>
 
             <div className="bottom_data">
+              {onecompany.length === 0 ? (
+                <p>No data available</p>
+              ) : (
+                onecompany.map((comp) => (
+                  <div className="reminders" key={comp.companyID}>
+                    <div className="header">
+                      <h3>{comp.companyName}</h3>
+                    </div>
+                    <ul className="task_list">
+                      <li className="completed">
+                        <div className="task_title">
+                          <p>{comp.companyAddress}</p>
+                        </div>
+                      </li>
+                      <li className="completed">
+                        <div className="task_title">
+                          <p>{comp.contactInformation}</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                ))
+              )}
+
               <div className="orders">
                 <div className="header">
                   <h3>Recent Orders</h3>
@@ -175,40 +216,6 @@ function Companyp() {
                     </tr>
                   </tbody>
                 </table>
-              </div>
-
-              <div className="reminders">
-                <div className="header">
-                  <h3>Reminders</h3>
-                </div>
-                <ul className="task_list">
-                  <li class="completed">
-                    <div class="task_title">
-                      <p>Start Our Meeting</p>
-                    </div>
-                  </li>
-                  <li class="completed">
-                    <div class="task_title">
-                      <p>Analysis Our Site</p>
-                    </div>
-                  </li>
-
-                  <li class="uncomplete">
-                    <div class="task_title">
-                      <p>Play Snooker</p>
-                    </div>
-                  </li>
-                  <li class="completed">
-                    <div class="task_title">
-                      <p>Start Our Meeting</p>
-                    </div>
-                  </li>
-                  <li class="uncomplete">
-                    <div class="task_title">
-                      <p>Play Snooker</p>
-                    </div>
-                  </li>
-                </ul>
               </div>
             </div>
           </main>
