@@ -35,6 +35,7 @@ const Home = () => {
       <Swiper
         style={{
           "--swiper-pagination-color": "#fff",
+          height: "800px",
         }}
         slidesPerView={1}
         spaceBetween={30}

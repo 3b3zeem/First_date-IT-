@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./AddAdvertisement.css";
 const AddAdvertisement = () => {
   let navigate = useNavigate();
+  let { companyID } = useParams();
 
   const [title, setTitle] = useState("");
-  const [companyID, setCompanyID] = useState(0);
   const [companyName, setCompanyName] = useState("");
   const [validFrom, setValidFrom] = useState("");
   const [validTo, setValidTo] = useState("");
@@ -70,9 +70,7 @@ const AddAdvertisement = () => {
                     type="text"
                     className="input-feild6"
                     id="inputTitle"
-                    onChange={(e) =>
-                      handleInputChange(setCompanyID, e.target.value)
-                    }
+                    readOnly
                     value={companyID} // Add value attribute to control input
                   />
                 </div>

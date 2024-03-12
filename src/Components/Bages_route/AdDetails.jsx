@@ -8,16 +8,19 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { FreeMode, Pagination } from "swiper/modules";
-import { FaQuoteRight, FaStar } from "react-icons/fa";
+import { FaQuoteRight } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
+import Swal from "sweetalert2";
 
 const AdDetails = () => {
-  let { advertisementId } = useParams();
+  let { advertisementId, reviewId } = useParams();
+
   const [product, setProduct] = useState({});
   const [review, setShowReview] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
-  // Function to fetch advertisements
+  // Function to fetch the advertisement
   const fetchAdvertisements = () => {
     fetch(`https://localhost:7120/api/advertisements/${advertisementId}`)
       .then((response) => {
@@ -37,6 +40,7 @@ const AdDetails = () => {
       .catch((error) => console.error("Error fetching product:", error));
   };
 
+  //Function to fetch the reviews of the advertisement
   const shoReview = () => {
     fetch(
       `https://localhost:7120/api/advertisements/${advertisementId}/reviews`
@@ -51,10 +55,26 @@ const AdDetails = () => {
       });
   };
 
+  //Delete Review
+  const deleteReview = (reviewId) => {
+    Swal.fire({
+      title: "Are you sure to Delete this Review!?",
+      showCancelButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://localhost:7120/api/reviews/${reviewId}`, {
+          method: "DELETE",
+        })
+          .then(() => shoReview())
+          .catch((error) => console.error("Error deleting product:", error));
+      }
+    });
+  };
+
   useEffect(() => {
     fetchAdvertisements();
     shoReview();
-  }, [advertisementId]);
+  }, [advertisementId, reviewId]);
 
   const [qty, setQty] = useState(1);
   const [totalPrice, setTotalPrice] = useState(product.price);
@@ -81,7 +101,10 @@ const AdDetails = () => {
         </div>
         <div className="container-ads">
           <div className="product-content">
-            <Link to={`/company/${product.companyId}`} className="product-subtitle">
+            <Link
+              to={`/company/${product.companyId}`}
+              className="product-subtitle"
+            >
               {product.companyName}
             </Link>
             <h1 className="product-title">Ad Name: {product.title}</h1>
@@ -116,8 +139,15 @@ const AdDetails = () => {
               </button>
             </div>
           </div>
+          <Link
+            to={`/advertisements/${advertisementId}/addReview`}
+            className="btn btn-primary mt-5"
+          >
+            Add Review
+          </Link>
         </div>
-        <div className="swiper">
+
+        <div className="mb-5 mt-5">
           {review.length === 0 ? (
             <p>No reviews available</p>
           ) : (
@@ -136,18 +166,38 @@ const AdDetails = () => {
                   <div className="contant-of-rev">
                     <div className="rating-quot">
                       <FaQuoteRight className="quot-icon" />
-                      <div>
-                        <CiStar className="star" />
-                        <FaStar className="star" />
-                        <FaStar className="star" />
-                        <FaStar className="star" />
-                        <FaStar className="star" />
+                      <div className="stars-rating">
+                        {Array.from({ length: Math.floor(review.rating) }).map(
+                          (_, index) => (
+                            <FaStar key={index} style={{ color: "orange" }} />
+                          )
+                        )}
+                        {Array.from({
+                          length: Math.floor(5 - review.rating),
+                        }).map((_, index) => (
+                          <CiStar key={index} />
+                        ))}
                       </div>
                     </div>
                     <div className="information-of-rating">
                       <p>User name : {review.userName}</p>
                       <p>{review.comment}</p>
                       <p>{review.datePosted}</p>
+                    </div>
+                    <div className="review_btn">
+                      <button
+                        onClick={() => deleteReview(review.reviewID)}
+                        className="btn btn-danger"
+                      >
+                        <span>Delete</span>
+                      </button>
+
+                      <Link
+                    to={`/advertisements/${advertisementId}/EditReview/${review.reviewID}`}
+                        className="btn btn-success"
+                      >
+                        Edit
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>

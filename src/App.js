@@ -24,8 +24,8 @@ import Advertisements from "./Components/Bages_route/Advertisements";
 import EditAdvertisement from "./Components/Bages_route/EditAdvertisement";
 import Companyp from "./Components/Company/Companyp";
 import Companies from "./Components/Company/Companies";
-import AddReviews from "./Components/Bages_route/reviews/AddReviews";
-import ShowReviews from "./Components/Bages_route/reviews/ShowReviews";
+import AddReviews from "./Components/Bages_route/AddReviews";
+import EditReviews from "./Components/Bages_route/EditReviews";
 
 function App() {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -104,7 +104,10 @@ function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/advertisements" element={<Advertisements />} />
-        <Route path="/advertisements/add" element={<AddAdvertisement />} />
+        <Route
+          path="/advertisements/:companyID/add"
+          element={<AddAdvertisement />}
+        />
         <Route
           path="/advertisements/:advertisementId"
           element={<AdDetails />}
@@ -116,7 +119,14 @@ function App() {
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="Company" element={<Companies />} />
         <Route path="Company/:companyID" element={<Companyp />} />
-        {/* <Route path="/addReview" element={<AddReviews />} /> */}
+        <Route
+          path="/advertisements/:advertisementId/addReview"
+          element={<AddReviews />}
+        />
+        <Route
+          path="/advertisements/:advertisementId/EditReview/:reviewId"
+          element={<EditReviews />}
+        />
       </Routes>
     </div>
   );

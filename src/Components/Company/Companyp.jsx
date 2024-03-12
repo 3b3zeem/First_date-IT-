@@ -10,7 +10,7 @@ import { MdContentPaste } from "react-icons/md";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { ImUsers } from "react-icons/im";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function Companyp() {
   let { companyID } = useParams();
@@ -26,7 +26,7 @@ function Companyp() {
         } else {
           setOneCompany([data]);
         }
-      })
+      });
   }, [companyID]);
 
   return (
@@ -35,6 +35,13 @@ function Companyp() {
         <div className="App-company">
           <div className="sidebar-company">
             <ul className="side-menu">
+              <li className="hoverbtn">
+                <Link
+                  to={`/advertisements/${companyID}/add`}
+                >
+                  Add Advertisement
+                </Link>
+              </li>
               <li className="hoverbtn">
                 <a href="#/">
                   <MdOutlineDashboardCustomize className="bx-side" />
@@ -76,17 +83,6 @@ function Companyp() {
           <main>
             <div className="header">
               <h1>Dashboard</h1>
-              <ul className="breadcrumb">
-                <li>
-                  <a href="#/" className="active">
-                    Analytics
-                  </a>
-                </li>
-                /
-                <li>
-                  <a href="#/">Content</a>
-                </li>
-              </ul>
             </div>
 
             <ul className="cards">
