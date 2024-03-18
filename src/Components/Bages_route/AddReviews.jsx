@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddReviews.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import authService from "../../Service/auth-service";
 
 const AddReviews = () => {
   let navigate = useNavigate();
@@ -11,11 +12,22 @@ const AddReviews = () => {
   const [username, setUsername] = useState("");
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-  const [datePosted, setDatePosted] = useState("");
+  const [datePosted, setDatePosted] = useState(
+    new Date().toISOString().slice(0, 16)
+  );
 
   const handleInputChange = (setter, value) => {
     setter(value);
   };
+
+  const [currentUser, setCurrentUser] = useState();
+  useEffect(() => {
+    const user = authService.getCurrentUser();
+
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
 
   const formSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +39,8 @@ const AddReviews = () => {
         },
         body: JSON.stringify({
           adId: advertisementId,
-          userID: userID,
-          username: username,
+          userID: currentUser?.userID || 0, // تأكد من وجود currentUser قبل الاستخدام
+          username: currentUser?.username || "", // تأكد من وجود currentUser قبل الاستخدام
           rating: rating,
           comment: comment,
           datePosted: datePosted,
@@ -36,11 +48,10 @@ const AddReviews = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           Swal.fire({
             title: "Good job!",
             text: "You clicked the button!",
-            icon: "success"
+            icon: "success",
           });
           navigate(`/advertisements/${advertisementId}`);
         });
@@ -53,7 +64,7 @@ const AddReviews = () => {
   return (
     <div className="all-reviews-con">
       <div className="container-contant-Review">
-        <h1 className="ad-title-rev">Add New Reviwe From Here </h1>
+        <h1 className="ad-title-rev">Add New Review From Here</h1>
         <div className="form-add-rev">
           <div className="image-of-contact-rev">
             <h2>Put Your Fingerprint!</h2>
@@ -73,7 +84,6 @@ const AddReviews = () => {
                   id="inputTitle"
                 />
               </div>
-
               <div className="only-input">
                 <label htmlFor="inputTitle" className="form-label-add-rev">
                   User ID
@@ -82,11 +92,10 @@ const AddReviews = () => {
                   type="text"
                   className="input-feild6"
                   onChange={(e) => handleInputChange(setUserID, e.target.value)}
-                  value={userID}
+                  value={currentUser?.userID || 0}
                   id="inputTitle"
                 />
               </div>
-
               <div className="only-input">
                 <label htmlFor="inputTitle" className="form-label-add-rev">
                   User name
@@ -97,29 +106,30 @@ const AddReviews = () => {
                   onChange={(e) =>
                     handleInputChange(setUsername, e.target.value)
                   }
-                  value={username}
+                  value={currentUser?.username || ""}
                   id="inputTitle"
                 />
               </div>
-
-              <div className="only-input">
-                <label htmlFor="inputPostDate" className="form-label-add-rev">
-                  Rating
+              <div>
+                <label htmlFor="inputTitle" className="form-label-edit mb-3">
+                  Rating : {rating}
                 </label>
+                <br />
                 <input
-                  type="number"
-                  className="input-feild6"
+                  type="range"
+                  className="input-feild7"
+                  id="inputTitle"
+                  value={rating}
+                  min={1}
+                  max={5}
                   onChange={(e) => {
                     const value = e.target.value;
                     if (Number.isInteger(parseFloat(value))) {
                       handleInputChange(setRating, value);
                     }
                   }}
-                  value={rating}
-                  id="inputPostDate"
                 />
               </div>
-
               <div className="only-input">
                 <label htmlFor="inputExpiryDate" className="form-label-add-rev">
                   Comment
@@ -134,7 +144,6 @@ const AddReviews = () => {
                   id="inputExpiryDate"
                 />
               </div>
-
               <div className="only-input">
                 <label
                   htmlFor="inputDescription"
@@ -148,11 +157,11 @@ const AddReviews = () => {
                   onChange={(e) =>
                     handleInputChange(setDatePosted, e.target.value)
                   }
+                  readOnly
                   value={datePosted}
                   id="inputDescription"
                 />
               </div>
-
               <div className="all-btn">
                 <button type="submit" className="btn-readyc4">
                   Submit

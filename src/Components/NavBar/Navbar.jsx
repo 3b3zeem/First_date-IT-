@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.scoped.css";
 import useLocalStorage from "use-local-storage";
 import { Link } from "react-router-dom";
@@ -8,9 +8,10 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { PiDotsNineBold } from "react-icons/pi";
 import { IoMdSunny } from "react-icons/io";
 import { BsFillMoonStarsFill } from "react-icons/bs";
+import { CiHeart } from "react-icons/ci";
+import authService from "../../Service/auth-service";
 
-
-const Navbar = () => {
+const Navbar = ({ cart = [] }) => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",
@@ -38,6 +39,19 @@ const Navbar = () => {
     }
   };
   window.addEventListener("scroll", adding);
+
+  const [currentUser, setCurrentUser] = useState();
+  useEffect(() => {
+    const user = authService.getCurrentUser();
+
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
+
+  const logout = () => {
+    authService.Logout();
+  };
 
   return (
     <section className="app">
@@ -71,29 +85,47 @@ const Navbar = () => {
                 contact
               </Link>
             </li>
-            <li className="navItem">
-              <Link to="/userProfile" className="navLink">
-                User
-              </Link>
-            </li>
-            <li className="navItem">
-              <Link to="/Company" className="navLink">
-                Company
-              </Link>
-            </li>
+
+            {currentUser && (
+              <div className="d-flex flex-row">
+                <li className="navItem">
+                  <Link to="/Company" className="navLink">
+                    Company
+                  </Link>
+                </li>
+              </div>
+            )}
           </ul>
           <div onClick={removeNav} className="closeNavbar">
             <AiFillCloseCircle className="icon menuIcon" />
           </div>
         </div>
-        <div className="headerBtns flex">
-          <button className="btn loginBtn">
-            <Link to="/login">Login</Link>
-          </button>
-          <button className="darkMode" onClick={switchTheme}>
-            {theme === "light" ? <BsFillMoonStarsFill /> : <IoMdSunny />}
-          </button>
-        </div>
+        {currentUser ? (
+          <div className="navbar-nav ms-auto">
+            <li className="nav-item d-flex flex-row alight-item-center">
+              <div>
+                <Link to={'/userProfile'}>Welcome {currentUser.firstName}</Link>
+              </div>
+              <div>
+                <a href="/" onClick={logout} className="nav-link">
+                  Logout
+                </a>
+              </div>
+            </li>
+          </div>
+        ) : (
+          <div className="headerBtns flex">
+            {/* <div className="headerBtns flex">
+              <CiHeart className="icon" />
+            </div> */}
+            <button className="btn loginBtn">
+              <Link to="/login">Login</Link>
+            </button>
+          </div>
+        )}
+        <button className="darkMode" onClick={switchTheme}>
+          {theme === "light" ? <BsFillMoonStarsFill /> : <IoMdSunny />}
+        </button>
         <div onClick={showNav} className="togglrNavbar">
           <PiDotsNineBold className="icon" />
         </div>

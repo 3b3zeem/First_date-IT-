@@ -3,7 +3,7 @@
    align-items: center;
    justify-content: space-between;
    width: 100%;
-   position:fixed;
+   position: fixed;
    z-index: 1000;
 }
 
@@ -43,7 +43,7 @@
 @media screen and (max-width:768px) {
    .navBar {
       background-color: var(--background);
-      color:var(--text-primary);
+      color: var(--text-primary);
       position: absolute;
       width: 100%;
       height: max-content;
@@ -84,8 +84,8 @@
       justify-content: center;
       flex-direction: row;
    }
-   
-   .header .headerBtns .btn a{
+
+   .header .headerBtns .btn a {
       font-weight: 600;
       color: var(--PrimaryColor);
       border-radius: 1px;

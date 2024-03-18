@@ -173,10 +173,8 @@ const Advertisements = () => {
           {currentItems.map((ad) => (
             <div className="container-product-card" key={ad.adID}>
               <div className="one_card" style={{ width: "380px" }}>
+              <span className="span"></span>
                 <div className="card-body">
-                  <h5 className="card-title1">
-                    <u>Company</u> : <span>{ad.companyName}</span>
-                  </h5>
                   <div className="image-ss">
                     <Swiper
                       style={{
@@ -212,6 +210,9 @@ const Advertisements = () => {
                       </SwiperSlide>
                     </Swiper>
                   </div>
+                  <h5 className="card-title1">
+                    <u>Company</u> : <span>{ad.companyName}</span>
+                  </h5>
                   <h5 className="card-title1">
                     <u>Title</u> : <span>{ad.title}</span>
                   </h5>

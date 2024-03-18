@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./AddAdvertisement.css";
+
 const AddAdvertisement = () => {
   let navigate = useNavigate();
-  let { companyID } = useParams();
+  let { companyID , companyName } = useParams();
 
   const [title, setTitle] = useState("");
-  const [companyName, setCompanyName] = useState("");
   const [validFrom, setValidFrom] = useState("");
   const [validTo, setValidTo] = useState("");
   const [description, setDescription] = useState("");
@@ -52,16 +52,9 @@ const AddAdvertisement = () => {
           <h1 className="ad-title">Add New Advertisement</h1>
           <div className="form-add-ad">
             <div className="image-of-contact-ad">
-              {/* <h2>Get in Touch!</h2>
-              <p>
-                We will love to talk to you, get started by filling the details
-                below and submit.
-              </p> */}
             </div>
             <div className="contant-of-add-ad">
               <form className="coll-add" onSubmit={formSubmit}>
-                {/* Title */}
-
                 <div className="only-input">
                   <label htmlFor="inputTitle" className="form-label-add">
                     Company ID
@@ -71,10 +64,10 @@ const AddAdvertisement = () => {
                     className="input-feild6"
                     id="inputTitle"
                     readOnly
-                    value={companyID} // Add value attribute to control input
+                    value={companyID}
                   />
                 </div>
-                {/* Title */}
+
                 <div className="only-input">
                   <label htmlFor="inputTitle" className="form-label-add">
                     Company Name
@@ -83,13 +76,10 @@ const AddAdvertisement = () => {
                     type="text"
                     className="input-feild6"
                     id="inputTitle"
-                    onChange={(e) =>
-                      handleInputChange(setCompanyName, e.target.value)
-                    }
-                    value={companyName} // Add value attribute to control input
+                    value={companyName}
                   />
                 </div>
-                {/* Title */}
+
                 <div className="only-input">
                   <label htmlFor="inputTitle" className="form-label-add">
                     Advert name
@@ -101,10 +91,10 @@ const AddAdvertisement = () => {
                     onChange={(e) =>
                       handleInputChange(setTitle, e.target.value)
                     }
-                    value={title} // Add value attribute to control input
+                    value={title}
                   />
                 </div>
-                {/* Post Date */}
+
                 <div className="only-input">
                   <label htmlFor="inputPostDate" className="form-label-add">
                     Post Date
@@ -116,10 +106,10 @@ const AddAdvertisement = () => {
                     onChange={(e) =>
                       handleInputChange(setValidFrom, e.target.value)
                     }
-                    value={validFrom} // Add value attribute to control input
+                    value={validFrom}
                   />
                 </div>
-                {/* Expiry Date */}
+
                 <div className="only-input">
                   <label htmlFor="inputExpiryDate" className="form-label-add">
                     Expiry Date
@@ -131,9 +121,10 @@ const AddAdvertisement = () => {
                     onChange={(e) =>
                       handleInputChange(setValidTo, e.target.value)
                     }
-                    value={validTo} // Add value attribute to control input
+                    value={validTo}
                   />
                 </div>
+
                 <div className="only-input">
                   <label htmlFor="inputDescription" className="form-label-add">
                     Details
@@ -148,6 +139,7 @@ const AddAdvertisement = () => {
                     value={description}
                   />
                 </div>
+
                 <div className="only-input">
                   <label htmlFor="inputDescription" className="form-label-add">
                     Price
@@ -162,6 +154,7 @@ const AddAdvertisement = () => {
                     value={price}
                   />
                 </div>
+
                 <div className="all-btn">
                   <button type="submit" className="btn-readyc4">
                     Submit

@@ -389,3 +389,17 @@ main .bottom_data .reminders .task_list li.uncomplete {
         min-width: 340px;
     }
 }
+
+
+.card-ad-company{
+    width:90%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    border: 0%;
+    outline: none;
+}

@@ -1,97 +1,79 @@
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import './Login.css'
+import { Link, useNavigate } from "react-router-dom";
+import authService from "../../Service/auth-service";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const Navigate = useNavigate();
 
-  function handleLogin() {
-    let items = { email, password };
-    console.warn(items);
-    fetch("https://localhost:7214/User_Acounts/Login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(items)
-    })
-      .then((result) => {
-        if (!result.ok) {
-          throw new Error("Network response was not ok");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await authService.Login(email, password).then(
+        () => {
+          navigate("/");
+          window.location.reload();
+        },
+        (error) => {
+          console.log(error);
         }
-        return result.json();
-      })
-      .then((resp) => {
-        console.warn(resp);
-        alert("Login Successfully!")
-        Navigate("/");
-      })
-      .catch((error) => {
-        console.error("There was a problem with your login:", error);
-        alert("Email Or Password Not Correct!")
-      });
-  }
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <div className="Login-block">
-      <div className="Container-Login">
-        <div className="image-of-Login" >
-        </div>
-        <div className="contant-of-Login">
-          <h3 className="text-Login">Login</h3>
-          <form className="coll1" onSubmit={(e) => {
-            e.preventDefault();
-            handleLogin();
-          }}>
+    <div>
+      {/* <form onSubmit={handleLogin}>
+        <h3>Login</h3>
+        <input
+          type="Email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Log in</button>
+      </form> */}
+
+      <form onSubmit={handleLogin} className="ms-5 mt-5">
+        <div className="form-row">
+          <div className="form-group col-md-6">
+            <label for="inputEmail4">Email</label> <br />
             <input
               type="email"
-              name="email"
-              required
+              classN="form-control"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your Email"
-              className="input-feild2"
+              id="inputEmail4"
+              placeholder="Email"
             />
+          </div>
+          <div className="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
             <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              required
+              type="password"
+              className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              id="inputPassword4"
               placeholder="Password"
-              className="input-feild2"
             />
-            <button
-              type="button"
-              style={{ border: "none" }}
-              className="btnHiddenPass"
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </button>
-
-            <input type="submit" className="btn-ready4" value="Log In" />
-          </form>
-          <div className="link2">
-            <p>
-              Don't have an account?
-              <br />
-              <Link to="/registration">Sign Up</Link>
-            </p>
           </div>
         </div>
-      </div>
+        <button type="submit" className="btn btn-primary mt-5">
+          Sign in
+        </button>
+        <p>U don't hve an account! <Link to={"/registration"}>Sign Up</Link></p>
+      </form>
     </div>
   );
 };

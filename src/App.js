@@ -11,7 +11,7 @@ import Footer from "./Components/Footer/Footer";
 import Middle from "./Components/Home/Middle";
 import Timeline from "./Components/Home/Timeline";
 import useLocalStorage from "use-local-storage";
-import UserProfile from "./Components/UserProfile/UserProfile";
+import UserProfile from "./Components/UserProfileNew/Userprofile";
 import { useEffect, useState } from "react";
 import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
 import Popular from "./Components/Popular/Popular";
@@ -105,9 +105,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/advertisements" element={<Advertisements />} />
         <Route
-          path="/advertisements/:companyID/add"
+          path="/advertisements/:companyID/:companyName/add"
           element={<AddAdvertisement />}
         />
+
         <Route
           path="/advertisements/:advertisementId"
           element={<AdDetails />}

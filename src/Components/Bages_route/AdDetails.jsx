@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./AdDetails.css";
-import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Footer from "../Footer/Footer";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { FreeMode, Pagination } from "swiper/modules";
 import { FaQuoteRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import Swal from "sweetalert2";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import ADDetails from "./ADDetilas/ADDetails";
 const AdDetails = () => {
   let { advertisementId, reviewId } = useParams();
 
@@ -93,85 +93,157 @@ const AdDetails = () => {
     }
   };
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   return (
     <React.Fragment>
       <div className="allll">
         <div className="Advertisement-No">
           <h1>Advertisement No:&nbsp; {advertisementId}</h1>
         </div>
-        <div className="container-ads">
-          <div className="product-content">
-            <Link
-              to={`/company/${product.companyId}`}
-              className="product-subtitle"
-            >
-              {product.companyName}
-            </Link>
-            <h1 className="product-title">Ad Name: {product.title}</h1>
-            <p className="product-text">Description: {product.description}</p>
+        {/* <div className="container-ads">
+                    <div className="all-cont-ad-de">
+                        <main id="products-ad">
+                            <div className="container-ad-de">
+                                <div className="producat_wrapper-ad-de">
+                                    <div className="producat_image-ad-de">
+                                        <div className="img_thumbnail">
+                                            <img src={im} alt="" />
+                                            <div className="img_small">
+                                                <img
+                                                    src={im}
+                                                    alt=""
+                                                    className="active"
+                                                />
+                                                <img src={im} alt="" />
+                                                <img src={im} alt="" />
+                                                <img src={im} alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                        <div className="modal">
+                            <div className="modal_wrapper">
+                                <img src={im} alt="" className="close_icon" />
+                                <div className="producat_image_modal">
+                                    <div className="img_thumbnail_modal">
+                                        <img
+                                            src={im}
+                                            alt=""
+                                            className="m_img"
+                                        />
+                                        <div className="img_small_modal">
+                                            <img
+                                                src={im}
+                                                alt=""
+                                                className="active"
+                                            />
+                                            <img src={im} alt="" />
+                                            <img src={im} alt="" />
+                                            <img src={im} alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="product-content">
+                        <Link
+                            to={`/company/${product.companyId}`}
+                            className="product-subtitle"
+                        >
+                            {product.companyName}
+                        </Link>
+                        <div className="add-name">
+                            <h1 className="product-title">{product.title}</h1>
+                        </div>
+                        <div className="Description-of-ad">
+                            <p className="product-text">
+                                {product.description}
+                            </p>
+                        </div>
 
-            <div className="wrapper">
-              <p className="p1">Post_Date : {product.validFrom}</p>
-              <p className="p1">Expiry_Date : {product.validTo}</p>
-              <p className="p1">
-                Price : $ {loaded ? totalPrice : product.price}
-              </p>
-            </div>
-            <div className="btn-group">
-              <p className="p1">Select Number Of Persons</p>
-              <div className="counter-wrapper">
-                <button className="counter-btn" onClick={decreaseProductQty}>
-                  <HiMinusSm className="ionicon" />
-                </button>
+                        <div className="wrapper">
+                            <p className="p1">
+                                Post Date : {product.validFrom}
+                            </p>
+                            <p className="p1">
+                                Expiry Date : {product.validTo}
+                            </p>
+                        </div>
+                        <p className="price">
+                            Price : $ {loaded ? totalPrice : product.price}
+                        </p>
+                        <div className="btn-group">
+                            <div className="counter-wrapper">
+                                <button
+                                    className="counter-btn"
+                                    onClick={decreaseProductQty}
+                                >
+                                    <HiMinusSm className="ionicon" />
+                                </button>
 
-                <span className="span" data-qty>
-                  {qty}
-                </span>
+                                <span className="span" data-qty>
+                                    {qty}
+                                </span>
 
-                <button className="counter-btn" onClick={increaseProductQty}>
-                  <HiPlusSm className="ionicon " />
-                </button>
-              </div>
-              <button className="cart-btn">
-                <Link to="/products/add" className="Link-payment">
-                  GO TO PAYMENT
-                </Link>
-              </button>
-            </div>
-          </div>
-          <Link
-            to={`/advertisements/${advertisementId}/addReview`}
-            className="btn btn-primary mt-5"
-          >
-            Add Review
-          </Link>
-        </div>
-
-        <div className="mb-5 mt-5">
+                                <button
+                                    className="counter-btn"
+                                    onClick={increaseProductQty}
+                                >
+                                    <HiPlusSm className="ionicon " />
+                                </button>
+                            </div>
+                            <button className="cart-btn">
+                                <Link to="/booking" className="Link-payment">
+                                    GO TO Booking
+                                </Link>
+                            </button>
+                        </div>
+                    </div>
+                </div> */}
+        <ADDetails />
+        <div className="mb-5 mt-5 lalala">
           {review.length === 0 ? (
             <p>No reviews available</p>
           ) : (
-            <Swiper
-              slidesPerView={3}
-              spaceBetween={30}
-              freeMode={true}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[FreeMode, Pagination]}
-              className="mySwiper"
-            >
+            <Carousel responsive={responsive}>
               {review.map((review) => (
-                <SwiperSlide key={review.reviewID}>
+                <div key={review.reviewID}>
                   <div className="contant-of-rev">
                     <div className="rating-quot">
                       <FaQuoteRight className="quot-icon" />
                       <div className="stars-rating">
-                        {Array.from({ length: Math.floor(review.rating) }).map(
-                          (_, index) => (
-                            <FaStar key={index} style={{ color: "orange" }} />
-                          )
-                        )}
+                        {Array.from({
+                          length: Math.floor(review.rating),
+                        }).map((_, index) => (
+                          <FaStar
+                            key={index}
+                            style={{
+                              color: "orange",
+                            }}
+                          />
+                        ))}
                         {Array.from({
                           length: Math.floor(5 - review.rating),
                         }).map((_, index) => (
@@ -183,27 +255,41 @@ const AdDetails = () => {
                       <p>User name : {review.userName}</p>
                       <p>{review.comment}</p>
                       <p>{review.datePosted}</p>
-                    </div>
-                    <div className="review_btn">
-                      <button
-                        onClick={() => deleteReview(review.reviewID)}
-                        className="btn btn-danger"
-                      >
-                        <span>Delete</span>
-                      </button>
+                      <div className="review_btn">
+                        <button
+                          onClick={() => deleteReview(review.reviewID)}
+                          className="btn-readycrev"
+                        >
+                          <span>Delete</span>
+                        </button>
 
-                      <Link
-                    to={`/advertisements/${advertisementId}/EditReview/${review.reviewID}`}
-                        className="btn btn-success"
-                      >
-                        Edit
-                      </Link>
+                        <Link
+                          to={`/advertisements/${advertisementId}/EditReview/${
+                            review.reviewID
+                          }`}
+                          className="btn-readycrev"
+                        >
+                          Edit
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
+            </Carousel>
           )}
+        </div>
+        <div className="ready-add-rev">
+          <div className="disp-flex-add">
+            <h1 className="dispText">You Can Add New Review From Here!</h1>
+
+            <Link
+              to={`/advertisements/${advertisementId}/addReview`}
+              className="btn-ready"
+            >
+              Add Review
+            </Link>
+          </div>
         </div>
       </div>
       <Footer />
